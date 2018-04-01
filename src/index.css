@@ -1,0 +1,175 @@
+body {
+  padding-top:100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #B74E55;
+  font-family: 'EB Garamond', serif;
+}
+
+.logo {
+  background-color: #42626D;
+  width: 135px;
+  height: 60px; 
+  border-radius:10px;
+}
+.logo h1{
+  display: inline-block;
+  padding: 8px;
+  margin: 0;
+  font-size: 110%;
+  color: #F1DAC8;
+  border: solid 2px #F1DAC8;
+  border-radius:10px;
+}
+.navbar {
+  z-index: 50;
+  position: fixed;
+  max-height:75px;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-color: #F1DAC8;
+  color: #52151C;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .nav-link {
+  color: #52151C;
+  font-weight: 700;
+}
+
+input {
+  max-width: 100%;
+}
+
+label {
+  color: #51151D;
+  font-weight: 700;
+}
+
+.modalBox {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #F1DAC8;
+  align-self: center;
+}
+
+.dashboard {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #F1DAC8;
+  align-self: center;
+}
+
+.jumbotron {
+  width: 100vw;
+  height: 30vh;
+  background-color: #F1DAC8;
+}
+
+.flexBox-row,
+.flexBox-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexBox-column {
+  flex-direction: column;
+}
+
+.dropBox {
+  border: 2px dashed rgb(100,100,100);
+  padding-top: 120px;
+  width: 550px;
+  height: 10px;
+  background-color: #F1DAC8;
+  position: relative;
+  /* z-index: 10; */
+}
+
+.dropzone {
+  position: relative;
+}
+
+.preview {
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  /* z-index: -1; */
+}
+
+.delete {
+  position: absolute;
+  top:5px;
+  right:5px;
+  background-color: transparent;
+  color: rgba(255, 0 , 0, 1);
+  border-radius:50%;
+  border:1px solid rgba(255, 0 , 0, 1);
+  font-size: 50%;
+}
+
+.delete:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0 , 0, 1);
+  color: #fff;
+}
+
+.btn-fb {
+  background-color: #3B5999;
+  color: rgb(255, 255, 255);
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.square {
+  width: 180px;
+  height: 180px;
+  margin: 20px;
+}
+
+.modalForm {
+  position: absolute;
+  background-color: #F1DAC8;
+  top:50%;
+  right:0%;
+  bottom:0;
+  left:50%;
+  width:400px;
+  height:500px;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  padding: 20px;
+  border: 2px solid #fff;
+}
+
+.thumbnail {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
+
+li {
+  margin: 5px;
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
