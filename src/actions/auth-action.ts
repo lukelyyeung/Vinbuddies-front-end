@@ -4,7 +4,6 @@ import { ReactFacebookLoginInfo } from 'react-facebook-login';
 import { Dispatch } from 'redux';
 import axios from 'axios';
 
-console.log(`${ENV.api_server}/auth/sigup`);
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export type LOGIN_SUCCESS = typeof LOGIN_SUCCESS;
 
@@ -64,23 +63,19 @@ function loginFailure(message: string) {
 export function loginUser(email: string, password: string) {
   return (dispatch: Dispatch<LoginActions>) => {
     return axios
-    .post<APIResponse.login>(
-      `${ENV.api_server}/auth/login`,
-      {
-        email: email,
-        password: password
-      }
-    )
-    .then(response => {
+      .post<APIResponse.login>(
+        `${ENV.api_server}/auth/login`,
+        {
+          email: email,
+          password: password
+        }
+      )
+      .then(response => {
         if (response.data == null) {
           dispatch(loginFailure('Unknown Error'));
         } else if (response.data.error) {
-          // If there was a problem, we want to
-          // dispatch the error condition
           dispatch(loginFailure(response.data.error || ''));
         } else if (response.data.token) {
-          // If login was successful, set the token in local storage
-          // Dispatch the success action
           localStorage.setItem('token', response.data.token);
           dispatch(loginSuccess());
         }

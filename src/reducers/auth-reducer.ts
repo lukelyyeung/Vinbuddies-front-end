@@ -1,6 +1,8 @@
 import { LoginActions, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, SIGNUP_SUCCESS } from '../actions/auth-action';
+const initialAuthState = { isAuthenticated: false, isSignedUp: false };
 
-export function authReducer(state: reduxRice.AuthState, action: LoginActions) {
+export function authReducer(state: reduxRice.AuthState = initialAuthState, action: LoginActions) {
+  console.log(action.type);
   switch (action.type) {
     case SIGNUP_SUCCESS: {
       return { ...state, isSignedUp: true };
@@ -15,7 +17,7 @@ export function authReducer(state: reduxRice.AuthState, action: LoginActions) {
       return { ...state, isAuthenticated: false };
     }
     default: {
-      return { ...state, isAuthenticated: false };
+      return state;
     }
   }
 }
