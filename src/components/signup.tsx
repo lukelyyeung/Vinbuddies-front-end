@@ -47,11 +47,9 @@ class PureSignUp extends React.Component<SignUpProps, SignUpState> {
             return <Redirect to="/login" />;
         }
         return (
-            <div className="modalBox">
-                <Container>
-                    <SignupForm onSubmit={this.signUp} />
-                </Container>
-            </div >
+            <Container className="dashboard">
+                <SignupForm onSubmit={this.signUp} />
+            </Container>
         );
     }
 }

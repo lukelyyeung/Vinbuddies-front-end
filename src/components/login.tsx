@@ -26,8 +26,6 @@ interface LoginProps extends LocationProp {
 }
 
 interface LoginState {
-  // email: string;
-  // password: string;
   redirectToReferrer: boolean;
 }
 
@@ -59,8 +57,7 @@ export class PureLogin extends React.Component<LoginProps, LoginState> {
       return <Redirect to={from} />;
     }
     return (
-      <div className="modalBox">
-        <Container>
+        <Container className="dashboard">
           <Row>
             <Col xs="12" md="5">
                 <LoginForm onSubmit={this.login} />
@@ -73,7 +70,6 @@ export class PureLogin extends React.Component<LoginProps, LoginState> {
             </Col>
           </Row>
         </Container>
-      </div>
     );
   }
 }

@@ -2,7 +2,6 @@ import { LoginActions, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, SIGNUP_SUCC
 const initialAuthState = { isAuthenticated: false, isSignedUp: false };
 
 export function authReducer(state: reduxRice.AuthState = initialAuthState, action: LoginActions) {
-  console.log(action.type);
   switch (action.type) {
     case SIGNUP_SUCCESS: {
       return { ...state, isSignedUp: true };

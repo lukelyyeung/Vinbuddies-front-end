@@ -1,0 +1,53 @@
+.jumbotron {
+    width: 100vw;
+    height: 50vh;
+    position: relative;
+    background-color: transparent;
+    color: white;
+    border-radius: 0;
+    font-weight: 700;
+  }
+
+.jumbotron .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./homePage.jpg');
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: brightness(0.5);
+    -moz-filter: brightness(0.5);
+     -o-filter: brightness(0.5);
+     -ms-filter: brightness(0.5);
+     filter: brightness(0.5);
+     z-index: -1;
+}
+
+.jumbotron h2 {
+    font-weight: 700;
+    font-size: 9vw;
+    font-family: 'Lobster', 'Open Sans', serif;
+}
+
+.hero-button {
+    padding: 10px 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: ease 0.5s;
+}
+
+.hero-button:hover {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    font-weight: 700;
+    transform: scale(1.25);
+    transition: ease 0.5s;
+}

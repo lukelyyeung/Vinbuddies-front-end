@@ -1,0 +1,21 @@
+.tab-content {
+    min-height: 100vh;
+    background-color: white;
+    padding: 10px;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+.main-tab .nav-link {
+    border: 1px solid #dee2e6 #dee2e6 #dee2e6;
+    /* border: none; */
+}
+
+.main-tab .nav-link:hover {
+    border: 1px solid #fff #fff #fff;
+}
+
+.main-tab {
+    width: 100vw;
+  }

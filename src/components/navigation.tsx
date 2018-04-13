@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Route, Link } from 'react-router-dom';
-import { PrivateRoute } from './privateRoute';
+// import { PrivateRoute } from './privateRoute';
 import { Login } from './login';
 import { Home } from './home';
+import '../css/nav.css';
+
 import {
     Collapse,
     Navbar,
@@ -18,8 +20,8 @@ import {
 import { dashboard } from './dashboard';
 import { AuthButton } from './authButton';
 import { Signup } from './signup';
-import { Accept } from './dropFile';
-// import { Accept } from './dropFile';
+import { PostEvent } from './postEvent';
+// import { EventJournal } from './EventJournal';
 
 export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
     constructor(props: {}) {
@@ -45,7 +47,7 @@ export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
                         <div className="logo flexBox-row"><h1>Vinbuddies</h1></div>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar={true}>
+                    <Collapse className="navbar-toggle" isOpen={this.state.isOpen} navbar={true}>
                         <Nav className="ml-auto" navbar={true}>
                             <NavItem>
                                 <Link className="nav-link" to="/">Home</Link>
@@ -54,7 +56,7 @@ export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
                                 <Link className="nav-link" to="/">Vinobot</Link>
                             </NavItem>
                             <NavItem>
-                                <Link className="nav-link" to="/">contact</Link>
+                                <Link className="nav-link" to="/">Contact</Link>
                             </NavItem>
                             <NavItem>
                                 <Link className="nav-link" to="/">Marts</Link>
@@ -67,7 +69,7 @@ export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
                                         <Link className="nav-link" to="/dashboard">Dashboard</Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        <Link className="nav-link" to="/dropFile">DropFile</Link>
+                                        <Link className="nav-link" to="/postevent">Post Event</Link>
                                     </DropdownItem>
                                     <DropdownItem divider={true} />
                                 </DropdownMenu>
@@ -78,8 +80,8 @@ export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
                 <Route exact={true} path="/" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
-                <Route path="/dropFile" component={Accept} />
-                <PrivateRoute path="/dashboard" component={dashboard} />
+                <Route path="/postevent" component={PostEvent} />
+                <Route path="/dashboard" component={dashboard} />
             </div>
         );
     }
