@@ -7,7 +7,7 @@ import { renderDropZone } from './renderDropzone';
 const EventFormThirdPage = (props: any) => {
     const { customOnSubmit, previousPage } = props;
     return (
-        <form onSubmit={customOnSubmit}>
+        <form className="eventForm" onSubmit={customOnSubmit}>
             <Field name="winePhotos" component={renderDropZone} placeholder="Wines" />
             <InputGroup className="flexBox-row">
                 <Button color="secondary" onClick={previousPage}>Previous Page</Button>

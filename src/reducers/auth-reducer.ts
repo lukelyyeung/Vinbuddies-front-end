@@ -13,7 +13,7 @@ export function authReducer(state: reduxRice.AuthState = initialAuthState, actio
       return { ...state, isAuthenticated: false };
     }
     case LOGOUT_SUCCESS: {
-      return { ...state, isAuthenticated: false };
+      return undefined;
     }
     default: {
       return state;

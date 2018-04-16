@@ -1,0 +1,70 @@
+.rsc-container {
+    box-shadow: 4px 6px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.rsc-content {
+    height: 50vh;
+    padding: 10px;
+}
+
+.rsc {
+    margin-top: 50px;
+    color: #fff;
+    width:70vw;
+}
+
+.rsc-os {
+    display: flex;
+    justify-content: center;
+}
+
+.rsc-cs {
+    margin: 0 8vw 10px 8vw;
+    background-color: #42626D;
+    border-radius: 0 10px 10px 10px; 
+}
+
+.rsc-cs .card {
+    width: 200px;
+    height: auto;
+}
+
+.rsc-cs .card button {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rsc-os-options {
+    width:40%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.rsc-os-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rsc-os-option-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wineDetail {
+    display: flex;
+}
+
+.wine-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.wine-list > li {
+    margin: 15px;
+}

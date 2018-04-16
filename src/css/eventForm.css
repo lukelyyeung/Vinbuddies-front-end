@@ -1,5 +1,5 @@
 .eventForm {
-    width: 60vw;
+    min-width: 60vw;
 }
 
 input {
@@ -35,7 +35,7 @@ input {
 .datePicker {
     margin: 0;
     width: 100%;
-    min-height: 35px;
+    min-height: 40px;
     background-color: #F1DAC8;
     opacity: 0.85;
     border: none;

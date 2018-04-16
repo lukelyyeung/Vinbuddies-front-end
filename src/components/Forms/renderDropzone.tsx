@@ -10,11 +10,13 @@ import 'react-select/dist/react-select.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/renderDropzone.css';
 import env from '../../env';
+import { GravatarValue, GravatarOption } from './Gravator';
 const ENV = env.dev;
 
 export const RenderWineInput = (props: any) => {
     const { input } = props;
     const token = localStorage.getItem('token');
+    const arrowRender = () => (<span>+</span>);
     const getOptions = async (value: string) => {
         if (value === '') {
             return { options: [] };
@@ -28,7 +30,9 @@ export const RenderWineInput = (props: any) => {
                 label: wine.wine_name,
                 value: wine.wine_name,
                 id: wine.wine_id,
+                picture: wine.picture
             })));
+        console.log(options);
         return { options: options };
     };
 
@@ -41,8 +45,11 @@ export const RenderWineInput = (props: any) => {
             onBlur={() => input.onBlur(input.value)}
             loadOptions={getOptions}
             noResultsText="No wine found."
-            promptTextCreator={() => null}
-            newOptionCreator={({ label }) => ({ label: label, value: label, id: label })}
+            promptTextCreator={(value) => `Finding wine ${value}`}
+            valueComponent={GravatarValue}
+            optionComponent={GravatarOption}
+            arrowRenderer={arrowRender}
+            newOptionCreator={({ label }) => ({ label: label, value: label, id: label, picture: 'wine.png' })}
         />
     );
 };

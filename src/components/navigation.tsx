@@ -21,12 +21,15 @@ import { dashboard } from './dashboard';
 import { AuthButton } from './authButton';
 import { Signup } from './signup';
 import { PostEvent } from './postEvent';
-// import { EventJournal } from './EventJournal';
+import { VinoBot } from './VinoBot';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { ProfileAction, getUserProfile } from '../actions/userProfile-action';
+import { PrivateRoute } from './privateRoute';
 
-export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
-    constructor(props: {}) {
+export class PureNavigation extends React.Component<any, reduxRice.NavigationState> {
+    constructor(props: any) {
         super(props);
-
         this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false
@@ -37,6 +40,20 @@ export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    async componentDidMount() {
+        const token = localStorage.getItem('token');
+        if (token !== null) {
+            await this.props.getUserProfile(token);
+        }
+    }
+
+    async componentWillUpdate() {
+        const token = localStorage.getItem('token');
+        if (token !== null) {
+            await this.props.getUserProfile(token);
+        }
     }
 
     render() {
@@ -53,7 +70,7 @@ export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
                                 <Link className="nav-link" to="/">Home</Link>
                             </NavItem>
                             <NavItem>
-                                <Link className="nav-link" to="/">Vinobot</Link>
+                                <Link className="nav-link" to="/vinobot">Vinobot</Link>
                             </NavItem>
                             <NavItem>
                                 <Link className="nav-link" to="/">Contact</Link>
@@ -80,9 +97,19 @@ export class Navigation extends React.Component<{}, reduxRice.NavigationState> {
                 <Route exact={true} path="/" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
-                <Route path="/postevent" component={PostEvent} />
-                <Route path="/dashboard" component={dashboard} />
+                <Route path="/vinobot" component={VinoBot} />
+                <PrivateRoute path="/postevent" component={PostEvent} />
+                <PrivateRoute path="/dashboard" component={dashboard} />
             </div>
         );
     }
 }
+
+export const Navigation = connect(
+    null,
+    (dispatch: Dispatch<ProfileAction>) => ({
+        getUserProfile: (token: string): Promise<any> | any => dispatch(getUserProfile(token))
+    }),
+    null,
+    { pure: false }
+)(PureNavigation);

@@ -14,7 +14,8 @@ export class DatePickerInput extends React.Component<any> {
 
         return (
                 <Button
-                    color="primary datePicker"
+                    color="info"
+                    className={this.props.className}
                     onClick={this.props.onClick}
                 >
                     {this.props.value}
@@ -30,7 +31,8 @@ export const renderDatePicker = (props: any) => {
         <div className="dateTag">
         <label>{props.placeholder}</label>    
         <DatePicker
-            customInput={<DatePickerInput />}
+            customInput={<DatePickerInput/>}
+            className="datePicker"
             onChange={changeHandler}
             showTimeSelect={true}
             dateFormat="LLL"

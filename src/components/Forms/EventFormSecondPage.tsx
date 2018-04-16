@@ -7,7 +7,7 @@ import { renderGalleryDrop } from './renderGalleryDrop';
 const PureEventFormSecondPage = (props: any) => {
     const {handleSubmit, previousPage} = props;
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="eventForm" onSubmit={handleSubmit}>
             <Field name="photos" component={renderGalleryDrop} placeholder="Photos" />
             <Button color="secondary" onClick={previousPage}>Previous Page</Button>
             <Button color="success" type="sumbit">Next Page</Button>
@@ -20,6 +20,6 @@ const EventFormSecondPage: any = reduxForm({
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
     // validate
-})(PureEventFormSecondPage as any);
+})(PureEventFormSecondPage);
 
 export default EventFormSecondPage;

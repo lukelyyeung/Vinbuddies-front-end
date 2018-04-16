@@ -6,7 +6,11 @@ declare namespace reduxRice {
     interface NavigationState {
         isOpen: boolean;
     }
-    interface SignUpState {
-    }
-    
+    interface UserProfileState {
+        userId: number;
+        picture: string;
+        username: string;
+    }   
 }
+
+declare let ChatBot: any;

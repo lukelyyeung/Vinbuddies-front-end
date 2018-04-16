@@ -3,15 +3,16 @@ import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
 import '../css/dashboard.css';
 import { EventJournal } from './EventJournal';
+import { RootState } from '../store';
+import { connect } from 'react-redux';
 
-const home = (props: any) => {
+const PureHome = (props: any) => {
     const { match } = props;
     return (
         <div>
             <Row>
                 <Col xs="12" className="user-bar d-flex align-items-center justify-content-around">
-                    <div className="user-propic"><img src="" alt="" /></div>
-                    <Button color="info" className="square">FUCK</Button>
+                    <img className="user-propic" src={props.profile.picture} alt="" />
                     <Button color="info" className="square">YOU</Button>
                     <Button color="info" className="square">SHITTY</Button>
                 </Col>
@@ -32,11 +33,13 @@ const home = (props: any) => {
     );
 };
 
+const Home = connect((state: RootState) => ({ profile: state.profile }))(PureHome);
+
 export const dashboard = (props: any) => {
     const { match } = props;
     return (
         <Container className="dashboard">
-            <Route exact={true} path={match.url} component={home} />
+            <Route exact={true} path={match.url} component={Home} />
             <Route path={`${match.url}/eventjournal`} component={EventJournal} />
         </Container>
     );

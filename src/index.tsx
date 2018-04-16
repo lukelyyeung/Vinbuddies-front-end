@@ -3,15 +3,17 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/index.css';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { store } from './store';
 import { Navigation } from './components/navigation';
+import { ConnectedRouter } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
+const history = createHistory();
 
 const App = () => (
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <Navigation />
-    </Router>
+    </ConnectedRouter>
   </Provider>
 );
 

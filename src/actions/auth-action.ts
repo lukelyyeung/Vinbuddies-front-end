@@ -35,25 +35,25 @@ export interface LoginFailureAction {
 
 export type LoginActions = LoginSuccessAction | LoginFailureAction | LogoutSuccessAction | SingupSuccessAction;
 
-function loginSuccess() {
+export function loginSuccess() {
   return {
     type: LOGIN_SUCCESS
   };
 }
 
-function signUpSuccess() {
+export function signUpSuccess() {
   return {
     type: SIGNUP_SUCCESS
   };
 }
 
-function logoutSuccess() {
+export function logoutSuccess() {
   return {
     type: LOGOUT_SUCCESS
   };
 }
 
-function loginFailure(message: string) {
+export function loginFailure(message: string) {
   return {
     type: LOGIN_FAILURE,
     message: message

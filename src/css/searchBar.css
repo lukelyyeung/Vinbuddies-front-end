@@ -1,0 +1,49 @@
+.searchBar {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.searchBar .searchType {
+    width: auto;
+    height: 38px;
+    border: none;
+    background-color:#B74E55;
+    color:#fff;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.searchBar .keyword {
+    width: 200px;
+    height: 38px;
+}
+
+.keyword .Select-control {
+    height: 38px;
+    border: 1px solid #B74E55;
+    color: #B74E55;
+}
+
+.keyword .Select-placeholder {
+    color: #B74E55;
+}
+
+.event-datePicker {
+    height: 38px;
+    border: 1px solid #B74E55;
+    color: #B74E55;
+    background-color: #fff;
+    margin: 0;
+    width: 100%;
+    height: 38px;
+    text-align: left;
+}
+
+.event-datePicker:hover,
+.event-datePicker:focus {
+    background-color: #B74E55;
+    border: 1px solid #B74E55;
+    color: #fff;
+    box-shadow: none;
+}

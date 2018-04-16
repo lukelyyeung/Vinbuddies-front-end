@@ -6,6 +6,9 @@ import axios from 'axios';
 export const GET_JOURNAL_SUCCESS = 'GET_JOURNAL_SUCCESS';
 export type GET_JOURNAL_SUCCESS = typeof GET_JOURNAL_SUCCESS;
 
+export const SET_SEARCH_CRITERIA = 'SET_SEARCH_CRITERIA';
+export type SET_SEARCH_CRITERIA = typeof SET_SEARCH_CRITERIA;
+
 export const TAB_JOURNAL = 'TAB_JOURNAL';
 export type TAB_JOURNAL = typeof TAB_JOURNAL;
 
@@ -15,9 +18,24 @@ export type GET_MORE_JOURNAL_SUCCESS = typeof GET_MORE_JOURNAL_SUCCESS;
 export const GET_JOURNAL_FAIL = 'GET_JOURNAL_FAIL';
 export type GET_JOURNAL_FAIL = typeof GET_JOURNAL_FAIL;
 
+export interface SearchCriteria {
+  orderby: string;
+  limit: number;
+  search: {
+    searchType?: string;
+    keyword?: string;
+  };
+  deleted?: boolean;
+}
+
 export interface GetJournalSuccessAction {
   type: GET_JOURNAL_SUCCESS;
   journal: any;
+}
+
+export interface SetSearchCriteriaAction {
+  type: SET_SEARCH_CRITERIA;
+  criteria: SearchCriteria;
 }
 
 export interface GetMoreJournalSuccessAction {
@@ -35,8 +53,9 @@ export interface TabJournalAction {
   activeTab: string;
 }
 
-export type GetJournalActions = 
-  GetJournalSuccessAction | GetJournalFailAction | GetMoreJournalSuccessAction | TabJournalAction;
+export type GetJournalActions =
+  GetJournalSuccessAction | GetJournalFailAction | GetMoreJournalSuccessAction |
+  TabJournalAction | SetSearchCriteriaAction;
 
 function getJournalSuccess(jounral: any) {
   return {
@@ -66,6 +85,13 @@ function tabJournalSuccess(tab: string) {
   };
 }
 
+function setSearchCriteria(criteria: SearchCriteria) {
+  return {
+    type: SET_SEARCH_CRITERIA,
+    criteria: criteria
+  };
+}
+
 export interface JournalQuery {
   role?: string;
   orderby?: string;
@@ -90,7 +116,7 @@ export function callJounral(query: JournalQuery) {
       url: `${ENV.api_server}/eventjournal?${generateQueryString(query)}`,
       headers: { Authorization: `Bearer ${token}` }
     })
-    .then(response => {
+      .then(response => {
         if (response.data == null) {
           return dispatch(getJournalFailure('Unknown Error'));
         } else if (response.data.error) {
@@ -113,5 +139,11 @@ export function callJounral(query: JournalQuery) {
 export function tabJournal(tab: string) {
   return (dispatch: Dispatch<GetJournalActions>) => {
     dispatch(tabJournalSuccess(tab));
+  };
+}
+
+export function setCriteria(criteria: SearchCriteria) {
+  return (dispatch: Dispatch<GetJournalActions>) => {
+    dispatch(setSearchCriteria(criteria));
   };
 }

@@ -3,11 +3,24 @@ import {
     GET_JOURNAL_SUCCESS, 
     GET_MORE_JOURNAL_SUCCESS, 
     GET_JOURNAL_FAIL, 
-    TAB_JOURNAL
+    TAB_JOURNAL,
+    SET_SEARCH_CRITERIA
 } from '../actions/journal-action';
-const initialJournalState = { events: [], activeTab: 'creator' };
 
-export function eventReducer(state: any = initialJournalState, action: GetJournalActions) {
+const initialJournalState = { 
+    events: [], 
+    activeTab: 'creator', 
+    criteria: {
+        limit: 2, 
+        orderby: 'date',
+        search: {
+            searchType: 'title',
+            keyword: ''
+        }  
+    }
+};
+
+export function journalReducer(state: any = initialJournalState, action: GetJournalActions) {
     switch (action.type) {
         case GET_JOURNAL_SUCCESS: {
             return {...state, events: action.journal};
@@ -20,6 +33,11 @@ export function eventReducer(state: any = initialJournalState, action: GetJourna
         }
         case TAB_JOURNAL: {
             return {...state, activeTab: action.activeTab};
+        }
+        case SET_SEARCH_CRITERIA: {
+            const criteria = {...state.criteria, ...action.criteria};
+            console.log('criteria is, ', criteria);
+            return {...state, criteria: criteria};
         }
         default: {
             return state;

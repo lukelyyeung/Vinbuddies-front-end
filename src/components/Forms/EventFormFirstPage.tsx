@@ -8,7 +8,6 @@ import { RenderTagInput } from './renderTagInput';
 import { renderTextArea } from './renderTextArea';
 
 const PureEventFormFirstPage = (props: any) => {
-    console.log(props);
     const {handleSubmit} = props;
     return (
             <form onSubmit={handleSubmit} className="eventForm">
@@ -38,6 +37,6 @@ const EventFormFirstPage: any = reduxForm({
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
     // validate
-})(PureEventFormFirstPage as any);
+})(PureEventFormFirstPage);
 
 export default EventFormFirstPage;
