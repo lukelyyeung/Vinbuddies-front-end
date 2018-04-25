@@ -2,6 +2,10 @@ import { Dispatch } from 'redux';
 import axios from 'axios';
 import * as jwt_decode from 'jwt-decode';
 import env from '../env';
+import { reduxRice } from '../module';
+import { toast } from 'react-toastify';
+import { generalAlert } from '../components/settings/alertSetting';
+import { messageMap } from '../reponseConstant';
 const ENV = env.dev;
 
 export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
@@ -51,9 +55,11 @@ export function getUserProfile(JWTtoken: string) {
                 if (response.data == null) {
                     return dispatch(getProfileFailure('Unknown Error'));
                 } else if (response.data.error) {
-                    return dispatch(getProfileFailure(response.data.err || ''));
+                    toast.error(messageMap[response.data.error], generalAlert);
+                    return dispatch(getProfileFailure(response.data.error || ''));
                 } else {
                     let { id, picture, username } = response.data;
+                    toast.success(`Welcome back! ${username}`, generalAlert);
                     return dispatch(getProfileSucess({
                         userId: id,
                         username: username,
@@ -62,7 +68,7 @@ export function getUserProfile(JWTtoken: string) {
                 }
             })
             .catch(err => {
-                alert(`Error: ${err.response.status}\n Message: ${err.response.data.error}`);
+                toast.error(messageMap[err.response.data.error], generalAlert);
             });
     };
 }

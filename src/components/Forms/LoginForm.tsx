@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
-import { Link } from 'react-router-dom';
 import { InputGroup, InputGroupAddon, InputGroupText, Input, Button } from 'reactstrap';
 import * as FA from 'react-fontawesome';
+import { Signup } from '../Signup';
 
 interface Credentials {
     email: string;
@@ -54,7 +54,8 @@ const PureLoginForm = (props: InjectedFormProps) => {
             <div className="flexBox-row">
                 <Button color="success" type="submit" disabled={submitting}>Login</Button>
                 <Button color="secondary" type="button" disabled={pristine || submitting} onClick={reset}>Clear</Button>
-                <Link to="/signup"><Button color="info">Sign up</Button></Link>
+                {/* <Link to="/signup"><Button color="info">Sign up</Button></Link> */}
+                <Signup buttonLabel="Sign up" />
             </div>
         </form>
     );

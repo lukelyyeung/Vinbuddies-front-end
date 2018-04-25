@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { GetJournalActions, callJounral, tabJournal, SearchCriteria, setCriteria } from '../actions/journal-action';
 import { SearchBar } from './Forms/SearchBar';
+import { RootState } from '../store';
+import * as bodyStyle from '../components/settings/bodyStyle';
 
 interface JournalQuery {
   role?: string;
@@ -30,6 +32,10 @@ class PureJournal extends React.Component<any, any> {
   }
 
   async componentDidMount() {
+    for (const i of Object.keys(bodyStyle.journal)) {
+      document.body.style[i] = bodyStyle.journal[i];
+    }
+
     if (this.props.events.length <= 0) {
       const { orderby, limit } = this.props.criteria;
       let query = {
@@ -38,6 +44,12 @@ class PureJournal extends React.Component<any, any> {
         limit: limit
       };
       await this.props.callJournal(query);
+    }
+  }
+
+  async componentWillUnmount() {
+    for (const i of Object.keys(bodyStyle.journal)) {
+      document.body.style[i] = null;
     }
   }
 
@@ -115,15 +127,25 @@ class PureJournal extends React.Component<any, any> {
         <TabContent activeTab={this.props.activeTab}>
           <SearchBar onSubmit={this.searchEvent} />
           <TabPane tabId="creator">
-            <Row>
+            <Row className="justify-content-center">
               <ShortEvent {...this.props} />
-              <Button color="info" onClick={this.moreEvent}>More</Button>
+              <Button
+                className="more-event-button"
+                onClick={this.moreEvent}
+              >
+                More
+              </Button>
             </Row>
           </TabPane>
           <TabPane tabId="participant">
-            <Row>
+            <Row className="justify-content-center">
               <ShortEvent {...this.props} />
-              <Button color="info" onClick={this.moreEvent}>More</Button>
+              <Button
+                className="more-event-button"
+                onClick={this.moreEvent}
+              >
+                More
+              </Button>
             </Row>
           </TabPane>
         </TabContent>
@@ -133,7 +155,7 @@ class PureJournal extends React.Component<any, any> {
 }
 
 const Journal = connect(
-  (state: any) => ({
+  (state: RootState) => ({
     events: state.events.events,
     activeTab: state.events.activeTab,
     criteria: state.events.criteria

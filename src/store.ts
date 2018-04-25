@@ -7,12 +7,16 @@ import { journalReducer } from './reducers/journal-reducer';
 import { userProfileReducer } from './reducers/userProfile-reducer';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+import { reduxRice } from './module';
+import { alertReducer } from './reducers/alert-action';
 const history = createHistory();
 const middleware = routerMiddleware(history);
 
 export interface RootState {
   auth: reduxRice.AuthState;
   profile: reduxRice.UserProfileState;
+  alert: reduxRice.AlertState;
+  events: any;
 }
 
 export const store = createStore(
@@ -21,7 +25,8 @@ export const store = createStore(
     form: formReducer,
     events: journalReducer,
     profile: userProfileReducer,
-    router: routerReducer
+    router: routerReducer,
+    alert: alertReducer
   }),
   // applyMiddleware(thunk, logger)
   applyMiddleware(thunk, middleware)

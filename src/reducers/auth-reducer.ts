@@ -1,4 +1,5 @@
 import { LoginActions, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, SIGNUP_SUCCESS } from '../actions/auth-action';
+import { reduxRice } from '../module';
 const initialAuthState = { isAuthenticated: false, isSignedUp: false };
 
 export function authReducer(state: reduxRice.AuthState = initialAuthState, action: LoginActions) {

@@ -10,7 +10,7 @@ import 'react-select/dist/react-select.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../css/renderDropzone.css';
 import env from '../../env';
-import { GravatarValue, GravatarOption } from './Gravator';
+import { GravatarOption, GravatarValueWine } from './Gravator';
 const ENV = env.dev;
 
 export const RenderWineInput = (props: any) => {
@@ -32,7 +32,6 @@ export const RenderWineInput = (props: any) => {
                 id: wine.wine_id,
                 picture: wine.picture
             })));
-        console.log(options);
         return { options: options };
     };
 
@@ -46,7 +45,7 @@ export const RenderWineInput = (props: any) => {
             loadOptions={getOptions}
             noResultsText="No wine found."
             promptTextCreator={(value) => `Finding wine ${value}`}
-            valueComponent={GravatarValue}
+            valueComponent={GravatarValueWine}
             optionComponent={GravatarOption}
             arrowRenderer={arrowRender}
             newOptionCreator={({ label }) => ({ label: label, value: label, id: label, picture: 'wine.png' })}
@@ -72,7 +71,7 @@ export const renderDropZone = (props: any) => {
             <label>{props.placeholder}</label>
             <div className="dropzone galleryZone">
                 <div className="dropBoxOverlay flexBox-column">
-                    <FA className="flexBox-row" size="4x" name="glass"/>
+                    <FA className="flexBox-row" size="4x" name="glass" />
                     <h5>Drag or drop or click to upload</h5>
                 </div>
                 <Dropzone

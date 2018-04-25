@@ -31,7 +31,7 @@ export class RenderMultipleInput extends React.Component<any, MultipleInputState
 
         const { eventSearch: { searchType } } = this.props;
         const type = searchType.toLowerCase();
-        const apiURL = (type === 'tag') ? `${ENV.api_server}/tag?${type}=${value}` :
+        const apiURL = (type === 'tag') ? `${ENV.api_server}/tags?q=${value}` :
             `${ENV.api_server}/eventjournal?${type}=${value}`;
         let options = await axios({
             method: 'GET',

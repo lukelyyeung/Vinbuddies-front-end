@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { RootState } from '../store';
 import { LoginActions, logout } from '../actions/auth-action';
+import { reduxRice } from '../module';
 
 interface AuthButtonProp extends reduxRice.AuthState {
   isAuthenticated: boolean;
@@ -13,12 +14,13 @@ interface AuthButtonProp extends reduxRice.AuthState {
 const PureAuthButton = ({ isAuthenticated, signOut }: AuthButtonProp) => {
   return (
     <div>
-      {isAuthenticated ? (
-        <Link className="nav-link" to="/" onClick={signOut}>Logout</Link>
-      ) : (
-          <Link className="nav-link" to="/login">Login</Link>
-        )
-      }
+      <Link
+        className="nav-link"
+        to={isAuthenticated ? '/' : '/login'}
+        onClick={isAuthenticated ? signOut : (() => null)}
+      >
+        {isAuthenticated ? 'Logout' : 'Login'}
+      </Link>
     </div>
   );
 };

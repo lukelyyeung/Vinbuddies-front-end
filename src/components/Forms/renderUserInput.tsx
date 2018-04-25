@@ -7,11 +7,20 @@ import env from '../../env';
 import { GravatarValue, GravatarOption } from './Gravator';
 const ENV = env.dev;
 
-export const RenderUserInput = (props: any) => {
-    const { input } = props;
-    const arrowRedner = () => (<span>+</span>);
-    const token = localStorage.getItem('token');
-    const getOptions = async (value: string) => {
+export class RenderUserInput extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
+        this.arrowRedner = this.arrowRedner.bind(this);
+        this.arrowRedner = this.arrowRedner.bind(this);
+        this.getOptions = this.getOptions.bind(this);
+    }
+
+    arrowRedner() {
+        return (<span>+</span>);
+    }
+
+    async getOptions(value: string) {
+        const token = localStorage.getItem('token');
         if (value === '') {
             return { options: [] };
         }
@@ -28,32 +37,36 @@ export const RenderUserInput = (props: any) => {
             })));
 
         return { options: options };
-    };
-
-    return (
-        <div className="userTag">
-            <label>{props.placeholder}</label>
-            <AsyncCreatable
-                {...props}
-                arrowRenderer={arrowRedner}
-                name={input.name}
-                value={input.value}
-                autosize={false}
-                onChange={(value: any) => input.onChange(value)}
-                onBlur={() => input.onBlur(input.value)}
-                valueComponent={GravatarValue}
-                optionComponent={GravatarOption}
-                loadOptions={getOptions}
-                noResultsText="No user found."
-                promptTextCreator={(value) => `Finding user ${value}`}
-                newOptionCreator={({ label }) => ({ label: label, value: label, id: label, picture: 'guestuser.jpg' })}
-            />
-            {(props.meta.touched && props.meta.error) ?
+    }
+    render() {
+        const { input } = this.props;
+        return (
+            <div className="userTag">
+                <label>{this.props.placeholder}</label>
+                <AsyncCreatable
+                    {...this.props}
+                    arrowRenderer={this.arrowRedner}
+                    name={input.name}
+                    value={input.value}
+                    autosize={false}
+                    onChange={(value: any) => input.onChange(value)}
+                    onBlur={() => input.onBlur(input.value)}
+                    valueComponent={GravatarValue}
+                    optionComponent={GravatarOption as any}
+                    loadOptions={this.getOptions}
+                    noResultsText="No user found."
+                    promptTextCreator={(value) => `Finding user ${value}`}
+                    newOptionCreator={
+                        ({ label }) =>
+                            ({ label: label, value: label, id: label, picture: 'guestuser.jpg' })}
+                />
+                {(this.props.meta.touched && this.props.meta.error) ?
                     (<div className="warn">
                         <FA className="left-hand-icon" name="exclamation-circle" />
-                        {props.meta.error}
+                        {this.props.meta.error}
                     </div>) : null
-            }
-        </div>
-    );
-};
+                }
+            </div>
+        );
+    }
+}

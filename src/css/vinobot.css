@@ -2,15 +2,29 @@
     box-shadow: 4px 6px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
+.rsc-header-title {
+    font-family: 'Lobster', 'Open Sans', serif;
+}
+
 .rsc-content {
-    height: 50vh;
+    height: 65vh;
     padding: 10px;
 }
 
+@media (min-width:768px) {
+    .rsc-content {
+        height: calc(100vh - 250px);
+    }
+}
+
 .rsc {
-    margin-top: 50px;
+    margin-top: 100px;
     color: #fff;
     width:70vw;
+}
+
+.rsc-ts-bubble {
+    font-size: 18px!important;
 }
 
 .rsc-os {
@@ -36,7 +50,7 @@
 }
 
 .rsc-os-options {
-    width:40%;
+    width:80%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -50,6 +64,7 @@
 }
 
 .rsc-os-option-element {
+    font-size: 18px!important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,4 +82,8 @@
 
 .wine-list > li {
     margin: 15px;
+}
+
+.rsc-loading > span {
+    font-size: 1.5rem;
 }

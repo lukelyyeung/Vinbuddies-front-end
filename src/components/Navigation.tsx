@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { Route, Link } from 'react-router-dom';
-// import { PrivateRoute } from './privateRoute';
-import { Login } from './login';
-import { Home } from './home';
+import { Link } from 'react-router-dom';
 import '../css/nav.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
     Collapse,
@@ -17,15 +15,13 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
-import { dashboard } from './dashboard';
 import { AuthButton } from './authButton';
-import { Signup } from './signup';
-import { PostEvent } from './postEvent';
-import { VinoBot } from './VinoBot';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { ProfileAction, getUserProfile } from '../actions/userProfile-action';
-import { PrivateRoute } from './privateRoute';
+import { reduxRice } from '../module';
+import { RootState } from '../store';
+import { jwtLogin, LoginActions } from '../actions/auth-action';
 
 export class PureNavigation extends React.Component<any, reduxRice.NavigationState> {
     constructor(props: any) {
@@ -42,30 +38,18 @@ export class PureNavigation extends React.Component<any, reduxRice.NavigationSta
         });
     }
 
-    async componentDidMount() {
-        const token = localStorage.getItem('token');
-        if (token !== null) {
-            await this.props.getUserProfile(token);
-        }
-    }
-
-    async componentWillUpdate() {
-        const token = localStorage.getItem('token');
-        if (token !== null) {
-            await this.props.getUserProfile(token);
-        }
-    }
-
     render() {
         return (
             <div className="d-flex justify-content-center">
                 <Navbar color="faded" light={true} expand="md">
-                    <NavbarBrand href="/">
-                        <div className="logo flexBox-row"><h1>Vinbuddies</h1></div>
+                    <NavbarBrand className="flexBox-row">
+                        <div className="logo-wrap">
+                            <h1 className="logo">VinBuddies</h1>
+                        </div>
                     </NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
+                    <NavbarToggler className="custom-toggler" onClick={this.toggle} />
                     <Collapse className="navbar-toggle" isOpen={this.state.isOpen} navbar={true}>
-                        <Nav className="ml-auto" navbar={true}>
+                        <Nav className="mr-auto" navbar={true}>
                             <NavItem>
                                 <Link className="nav-link" to="/">Home</Link>
                             </NavItem>
@@ -78,38 +62,41 @@ export class PureNavigation extends React.Component<any, reduxRice.NavigationSta
                             <NavItem>
                                 <Link className="nav-link" to="/">Marts</Link>
                             </NavItem>
+                        </Nav>
+                        <Nav className="ml-auto" navbar={true}>
                             <UncontrolledDropdown nav={true} inNavbar={true}>
-                                <DropdownToggle nav={true} caret={true}>User</DropdownToggle>
+                                <DropdownToggle
+                                    nav={true}
+                                    caret={true}
+                                >
+                                    {this.props.userProfile.username}
+                                </DropdownToggle>
                                 <DropdownMenu right={true}>
                                     <DropdownItem><AuthButton /></DropdownItem>
                                     <DropdownItem>
-                                        <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                                        <div>
+                                            <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                                        </div>
                                     </DropdownItem>
-                                    <DropdownItem>
-                                        <Link className="nav-link" to="/postevent">Post Event</Link>
-                                    </DropdownItem>
-                                    <DropdownItem divider={true} />
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                         </Nav>
                     </Collapse>
                 </Navbar>
-                <Route exact={true} path="/" component={Home} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/vinobot" component={VinoBot} />
-                <PrivateRoute path="/postevent" component={PostEvent} />
-                <PrivateRoute path="/dashboard" component={dashboard} />
             </div>
         );
     }
 }
 
 export const Navigation = connect(
-    null,
-    (dispatch: Dispatch<ProfileAction>) => ({
-        getUserProfile: (token: string): Promise<any> | any => dispatch(getUserProfile(token))
+    (state: RootState) => ({
+        userProfile: state.profile,
+        isAuthenicated: state.auth.isAuthenticated
     }),
-    null,
-    { pure: false }
+    (dispatch: Dispatch<ProfileAction|LoginActions>) => ({
+        getUserProfile: (token: string): Promise<any> | any =>
+            dispatch(getUserProfile(token)),
+        jwtLogin: (token: string): Promise<any> =>
+            dispatch(jwtLogin(token))
+    })
 )(PureNavigation);

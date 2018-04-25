@@ -1,5 +1,10 @@
 .eventForm {
-    min-width: 60vw;
+    min-width: 70vw;
+    width: auto;
+}
+
+.eventForm .inputArea{
+    box-shadow: none;
 }
 
 input {
@@ -27,26 +32,21 @@ input {
     margin: 10px 0;
 }
 
-.eventForm label {
-    color: #F1DAC8;
-    font-weight: 700;
-}
-
 .datePicker {
     margin: 0;
     width: 100%;
     min-height: 40px;
-    background-color: #F1DAC8;
+    background-color: rgb(183, 78, 85);
     opacity: 0.85;
     border: none;
     box-shadow: 5px 4px 0px 1px rgba(0, 0, 0, 0.3);
-    color: #000;
+    color: #fff;
 }
 
 .datePicker:hover {
     opacity: 1.0;
-    background-color: #F1DAC8;
-    color: #000;
+    background-color: rgb(183, 78, 85);
+    color: #fff;
 }
 
 .react-datepicker__input-container {

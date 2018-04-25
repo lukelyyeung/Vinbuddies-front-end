@@ -9,7 +9,7 @@ export const renderTextArea = (props: any) => {
         <div>
             <div className="inputArea">
                 <label>{props.placeholder}</label>
-                <Input {...props} {...props.input} style={{ height: '40vh' }} />
+                <Input {...props} {...props.input} style={{ height: '30vh' }} />
             </div>
             {(props.meta.touched && props.meta.error) ?
                 (<div className="warn">

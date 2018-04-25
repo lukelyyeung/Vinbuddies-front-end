@@ -15,11 +15,7 @@ ul {
 }
 
 .wineDropZone {
-    width: 80vw;
-}
-
-.wineDropZone label {
-    color: #F1DAC8;
+    width: 100%;
 }
 
 .dropBoxOverlay {

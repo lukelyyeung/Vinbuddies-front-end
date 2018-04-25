@@ -1,4 +1,5 @@
 import { ProfileAction, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE } from '../actions/userProfile-action';
+import { reduxRice } from '../module';
 
 const initialUserState = { username: 'Guest', picture: 'guestuser.jpg', userId: 0 };
 

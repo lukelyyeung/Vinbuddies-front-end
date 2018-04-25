@@ -3,13 +3,13 @@ import * as React from 'react';
 import axios from 'axios';
 import env from '../env';
 import WineDisplay from './WineDisplay';
-import { CardBody, Card, CardImg } from 'reactstrap';
+import { CardBody, Card, CardImg, Button } from 'reactstrap';
 const ENV = env.dev;
 
 const Wines = (props: any) => {
     let { result, getMoreWine } = props;
     return (
-        <div>
+        <div className="flexBox-column">
             <h3>Vinbuddies' recommendation</h3>
             <ul className="wine-list">
                 {Array.isArray(result) && result.map((wine: any, i: number) => (
@@ -32,7 +32,12 @@ const Wines = (props: any) => {
                     </li>
                 ))}
             </ul>
-            <button onClick={getMoreWine.bind(null, result.length)}>More wines</button>
+            <Button 
+                style={{backgroundColor: '#B74E55'}} 
+                onClick={getMoreWine.bind(null, result.length)}
+            >
+                More wines
+            </Button>
         </div>
     );
 };
@@ -57,7 +62,7 @@ export class VinoBotResult extends React.Component<any, any> {
         const token = localStorage.getItem('token');
         return await axios({
             method: 'GET',
-            url: `${ENV.api_server}/wine/meta?tags=${tags.join('+')}&offset=${offset || 0}`,
+            url: `${ENV.api_server}/wine/meta?tags=${tags.join('+')}&offset=${offset || 0}&limit=3`,
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(data => data.data);
@@ -114,11 +119,12 @@ export class VinoBotResult extends React.Component<any, any> {
                     >
                         {
                             !trigger &&
-                            <button
+                            <Button
+                                color="success"
                                 onClick={() => this.triggetNext()}
                             >
-                                Search Again
-                            </button>
+                                Search again
+                            </Button>
                         }
                     </div>
                 }

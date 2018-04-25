@@ -62,7 +62,7 @@ export class EventPreview extends React.Component<any, any> {
     }
 
     render() {
-        const { formValues, handleSubmit } = this.props;
+        const { formValues, customOnSubmit } = this.props;
         const wines = this.getIds(formValues, /^wine[0-9]+$/);
         return (
             <div>
@@ -120,7 +120,7 @@ export class EventPreview extends React.Component<any, any> {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="secondary" onClick={this.toggle}>Close</Button>
-                        <Button color="success" onClick={handleSubmit}>Submit</Button>{' '}
+                        <Button color="success" onClick={customOnSubmit}>Submit</Button>{' '}
                     </ModalFooter>
                 </Modal>
             </div>

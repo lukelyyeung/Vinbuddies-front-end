@@ -1,8 +1,7 @@
 .dashboard {
     width: 85%;
-    margin-top: 50px;
     padding: 30px;
-    background-color: #F1DAC8;
+    background-color: rgba(250, 250, 250, 0.85);
     align-self: center;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
 }
@@ -13,10 +12,35 @@
   height: 100%;
 }
 
-.square {
-  width: 180px;
-  height: 90px;
+.service-wrapper {
+  width: 150px;
+  height: 150px;
   margin: 20px;
+  text-align: center;
+  background-color: #42626D;
+  filter: brightness(1.0);
+}
+
+.serviceImg {
+  object-fit: contain;
+  bottom: 20%;
+  width: 80%;
+  height: 80%;
+}
+
+.service-wrapper:hover {
+  transform: scale(1.1) translateY(-5%);
+  background-color: #42626D;
+  filter: brightness(1.1);
+}
+
+.user-bar h6 {
+  padding: 10px;
+  text-align: center;
+  background-color: #42626D;
+  color: #fff;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .user-bar {
@@ -24,8 +48,9 @@
 }
 
 .user-propic {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 100px;
-  background-color: snow;
+  object-fit: cover;
+  background-color: #fff;
 }

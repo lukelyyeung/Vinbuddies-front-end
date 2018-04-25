@@ -81,11 +81,13 @@ export const PostEvent = (props: any) => {
                     headers: { Authorization: `Bearer ${token}` }
                 });
             })
-            .then(data => (data.data))
-            .catch(data => alert(data.error));
+            .then(data => data.data)
+            .catch(data => data.error);
     };
 
     return (
-        <WizardEventForm onSubmit={submit} />
+        <div className="non-homepage">
+            <WizardEventForm onSubmit={submit} />
+        </div>
     );
 };

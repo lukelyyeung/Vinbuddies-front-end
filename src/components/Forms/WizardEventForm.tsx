@@ -7,7 +7,9 @@ import { connect } from 'react-redux';
 import '../../css/eventForm.css';
 import '../../css/renderGalleryDrop.css';
 import { Redirect } from 'react-router';
-import { validate } from './validate';
+import { toast } from 'react-toastify';
+import * as bodyStyle from '../settings/bodyStyle';
+import { Container } from 'reactstrap';
 
 class PureWizardEventForm extends React.Component<any, any> {
     constructor(props: any) {
@@ -21,15 +23,28 @@ class PureWizardEventForm extends React.Component<any, any> {
         };
     }
 
+    componentDidMount() {
+        for (const i of Object.keys(bodyStyle.postEvent)) {
+            document.body.style[i] = bodyStyle.postEvent[i];
+        }
+    }
+
+    componentWillUnmount() {
+        for (const i of Object.keys(bodyStyle.postEvent)) {
+            document.body.style[i] = null;
+        }
+    }
+
     async customOnSubmit(e: any) {
         e.preventDefault();
         let response = await this.props.handleSubmit(e);
-        if (response.err) {
-            return alert(response.err);
-        }
-        if (confirm(response.status)) {
+        if (response.status) {
+            toast.success(response.status);
             await this.props.destroy();
             return this.setState({ submitted: true });
+        }
+        if (response.err) {
+            toast.error(response.err);
         }
         return;
     }
@@ -45,10 +60,10 @@ class PureWizardEventForm extends React.Component<any, any> {
     render() {
         const { page, submitted } = this.state;
         if (submitted) {
-            return <Redirect to="/" />;
+            return <Redirect to="/dashboard/eventjournal" />;
         }
         return (
-            <div>
+            <Container className="dashboard eventForm">
                 {page === 1 && <EventFormFirstPage onSubmit={this.nextPage} />}
                 {page === 2 &&
                     <EventFormSecondPage
@@ -61,7 +76,7 @@ class PureWizardEventForm extends React.Component<any, any> {
                         customOnSubmit={this.customOnSubmit}
                         {...this.props}
                     />}
-            </div>
+            </Container>
         );
     }
 }
@@ -70,7 +85,7 @@ const ReduxWizardEventForm: any = reduxForm({
     form: 'event',
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
-    validate
+    // validate
 })(PureWizardEventForm as any);
 
 const selector = formValueSelector('event');

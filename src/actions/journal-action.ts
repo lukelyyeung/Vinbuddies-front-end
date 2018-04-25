@@ -110,6 +110,7 @@ function generateQueryString(query: JournalQuery) {
 
 export function callJounral(query: JournalQuery) {
   let token = localStorage.getItem('token');
+  console.log(query);
   return (dispatch: Dispatch<GetJournalActions>) => {
     return axios({
       method: 'GET',

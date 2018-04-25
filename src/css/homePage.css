@@ -1,11 +1,12 @@
 .jumbotron {
     width: 100vw;
-    height: 50vh;
+    height: 100vh;
     position: relative;
     background-color: transparent;
     color: white;
     border-radius: 0;
     font-weight: 700;
+    margin: 0;
   }
 
 .jumbotron .bg {
@@ -15,6 +16,26 @@
     right: 0;
     bottom: 0;
     background-image: url('./homePage.jpg');
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: brightness(0.7);
+    -moz-filter: brightness(0.7);
+     -o-filter: brightness(0.7);
+     -ms-filter: brightness(0.7);
+     filter: brightness(0.7);
+     z-index: -1;
+}
+
+.jumbotron .overlay {
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+    right: 20vw;
+    bottom: 20vh;
+    background-color: rgba(255, 255, 255, 0.35);
+    width: 60vw;
+    height: 60vh;
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -28,15 +49,20 @@
 
 .jumbotron h2 {
     font-weight: 700;
-    font-size: 9vw;
+    font-size: calc(9.5vw + 10px);
+    font-family: 'Lobster', 'Open Sans', serif;
+}
+
+.jumbotron h4 {
     font-family: 'Lobster', 'Open Sans', serif;
 }
 
 .hero-button {
-    padding: 10px 20px;
-    width: 100px;
-    height: 50px;
-    border-radius: 100px;
+    padding: 5px 25px;
+    font-size: calc(100% + 5px);
+    width: auto;
+    height: auto;
+    /* border-radius: 100px; */
     background-color: transparent;
     border: 2px solid #fff;
     color: #fff;

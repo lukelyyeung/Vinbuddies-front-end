@@ -1,7 +1,8 @@
 body {
-  padding-top:77.6px;
-  background-color: #B74E55;
+  margin:0;
+  padding:0;
   font-family: 'Open Sans', serif;
+  background-color: #B74E55;
 }
 
 .left-hand-icon {
@@ -47,4 +48,44 @@ label {
   position: relative;
   width: 100%;
   height: 100px;
+}
+
+.kep-login-facebook {
+  border-radius: 10px!important;
+  width: 350px;
+  height: 100px;
+  font-size: calc(.27548vw + 19.71074px)!important;
+}
+
+.non-homepage {
+  margin-top: 100px;
+}
+
+.modal-title {
+  font-weight: 700;
+}
+
+.inputArea {
+  box-shadow: 3px 1px 0px 0px rgba(0,0,0,0.3);
+}
+
+.wine-offers {
+  align-items: center;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-right: -15px;
+  margin-left: -15px;
+  background-color: #fff;
+  color: #000;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 8px;
+  align-items: center;
+}
+
+.wine-offers .col-md-3, 
+.wine-offers .col-md-6 {
+  border-right: 1px solid #000;
 }

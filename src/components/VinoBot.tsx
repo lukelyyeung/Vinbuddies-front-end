@@ -5,9 +5,11 @@ import '../css/vinobot.css';
 import { VinoBotResult } from './VinoBotResult';
 import { connect } from 'react-redux';
 import { RootState } from '../store';
+import * as bodyStyle from '../components/settings/bodyStyle';
+import { SearchResult, SearchInput } from './VinoPriceSearch';
 
 const theme = {
-    background: '#F1DAC8',
+    background: 'rgba(255, 255, 255, 0.9)',
     fontFamily: 'Open Sans',
     headerBgColor: '#42626D',
     headerFontColor: '#F1DAC8',
@@ -37,72 +39,79 @@ export class PureVinoBot extends React.Component<any, any> {
         super(props);
         this.state = {
             steps: [
-                // {
-                //     id: 'welcome1',
-                //     message: `Hey ${this.props.profile.username || 'Guest'}! What can I help you?`,
-                //     trigger: 'service'
-                // },
-                // {
-                //     id: 'welcome2',
-                //     message: `So......  ${this.props.profile.username || 'Guest'}, What else I can help you?`,
-                //     trigger: 'service'
-                // },
-                // {
-                //     id: 'service',
-                //     options: [
-                //         { value: 'recommadation', label: 'Wine recommadation', trigger: 'question1' },
-                //         { value: 'wine search', label: 'Wine search', trigger: 'return' },
-                //         { value: 'wine price', label: 'Wine price', trigger: 'return' }
-                //     ]
-                // },
-                // {
-                //     id: 'return',
-                //     message: 'I am just a faked chatbot!\n What do you want from me!!?',
-                //     trigger: 'welcome2'
-                // },
-                // {
-                //     id: 'question1',
-                //     message: 'Which of these is your morning go-to coffee?',
-                //     trigger: 'options1'
-                // },
-                // {
-                //     id: 'options1',
-                //     options: [
-                //         { value: 'newWorld', label: 'Black coffee', trigger: 'question2' },
-                //         {
-                //             value: 'oldWorld',
-                //             label: 'Coffee with milk',
-                //             trigger: 'question2',
-                //         },
-                //     ]
-                // },
-                // {
-                //     id: 'question2',
-                //     message: 'Which of property of wine you prefer?',
-                //     trigger: 'options2'
-                // },
-                // {
-                //     id: 'options2',
-                //     options: [
-                //         { value: 'red', label: 'Bitter taste', trigger: 'question3' },
-                //         { value: 'sparkling', label: 'Fizzy', trigger: 'question3' },
-                //         {
-                //             value: 'rose',
-                //             label: 'Flower and Fruity taste',
-                //             trigger: 'question3'
-                //         },
-                //         {
-                //             value: 'white',
-                //             label: 'Flabby or tart',
-                //             trigger: 'question3'
-                //         },
-                //         {
-                //             value: 'dessert',
-                //             label: 'Sweet taste',
-                //             trigger: 'question3'
-                //         }
-                //     ]
-                // },
+                {
+                    id: 'welcome1',
+                    message: `Hey ${this.props.profile.username || 'Guest'}! What can I help you?`,
+                    trigger: 'service'
+                },
+                {
+                    id: 'welcome2',
+                    message: `So......  ${this.props.profile.username || 'Guest'}, What else I can help you?`,
+                    trigger: 'service'
+                },
+                {
+                    id: 'service',
+                    options: [
+                        { value: 'recommadation', label: 'Wine recommadation', trigger: 'question1' },
+                        { value: 'wine search', label: 'Wine search', trigger: 'welcome2' },
+                        { value: 'wine price', label: 'Wine price', trigger: 'wineInput' }
+                    ]
+                },
+                {
+                    id: 'wineInput',
+                    component: <SearchInput />,
+                    waitAction: true,
+                    trigger: 'InputResult'
+                },
+                {
+                    id: 'InputResult',
+                    component: <SearchResult />,
+                    waitAction: true,
+                    trigger: 'welcome1'
+                },
+                {
+                    id: 'question1',
+                    message: 'Which of these is your morning go-to coffee?',
+                    trigger: 'options1'
+                },
+                {
+                    id: 'options1',
+                    options: [
+                        { value: 'newWorld', label: 'Black coffee', trigger: 'question2' },
+                        {
+                            value: 'oldWorld',
+                            label: 'Coffee with milk',
+                            trigger: 'question2',
+                        },
+                    ]
+                },
+                {
+                    id: 'question2',
+                    message: 'Which of property of wine you prefer?',
+                    trigger: 'options2'
+                },
+                {
+                    id: 'options2',
+                    options: [
+                        { value: 'red', label: 'Bitter taste', trigger: 'question3' },
+                        { value: 'sparkling', label: 'Fizzy', trigger: 'question3' },
+                        {
+                            value: 'rose',
+                            label: 'Flower and Fruity taste',
+                            trigger: 'question3'
+                        },
+                        {
+                            value: 'white',
+                            label: 'Flabby or tart',
+                            trigger: 'question3'
+                        },
+                        {
+                            value: 'dessert',
+                            label: 'Sweet taste',
+                            trigger: 'question3'
+                        }
+                    ]
+                },
                 {
                     id: 'question3',
                     message: 'Which of food you prefer to serve with wine?',
@@ -122,11 +131,22 @@ export class PureVinoBot extends React.Component<any, any> {
                     id: 'search',
                     component: <VinoBotResult />,
                     waitAction: true,
-                    end: true
-                    // trigger: 'question1',
+                    trigger: 'question1'
                 }
             ]
         };
+    }
+
+    componentWillUnmount() {
+        for (const i of Object.keys(bodyStyle.vinobot)) {
+            document.body.style[i] = null;
+        }
+    }
+
+    componentDidMount() {
+        for (const i of Object.keys(bodyStyle.vinobot)) {
+            document.body.style[i] = bodyStyle.vinobot[i];
+        }
     }
 
     render() {

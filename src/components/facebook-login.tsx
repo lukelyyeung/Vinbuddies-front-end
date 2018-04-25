@@ -6,6 +6,7 @@ import { Dispatch } from 'redux';
 import { LoginActions, FbLoginUser } from '../actions/auth-action';
 import env from '../env';
 import { Redirect } from 'react-router';
+import { reduxRice } from '../module';
 const ENV = env.dev;
 
 interface LocationProp {
@@ -18,7 +19,9 @@ interface LocationProp {
 
 interface PureLoginProps {
     location: LocationProp;
+    userProfile: reduxRice.UserProfileState;
     login: (userInfo: ReactFacebookLoginInfo & { accessToken: string }) => Promise<void>;
+    getUserProfile: (token: string, msg: string) => Promise<any> | any;
     isAuthenticated: boolean;
 }
 
@@ -62,11 +65,12 @@ class PureFbLogin extends React.Component<PureLoginProps, PureLoginState> {
     }
 }
 
-export const FbLogin = connect(
-    (state: RootState) => ({ isAuthenticated: state.auth.isAuthenticated }),
+export const FbLogin: any = connect(
+    (state: RootState) => ({
+        isAuthenticated: state.auth.isAuthenticated,
+        userProfile: state.profile
+    }),
     (dispatch: Dispatch<LoginActions>) => ({
-        login: (
-            userInfo: ReactFacebookLoginInfo &
-                { accessToken: string }): Promise<void> =>
+        login: (userInfo: ReactFacebookLoginInfo & { accessToken: string }): Promise<void | number> =>
             dispatch(FbLoginUser(userInfo))
-    }))(PureFbLogin);
+    }))(PureFbLogin as any);

@@ -4,15 +4,15 @@ import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/index.css';
 import { store } from './store';
-import { Navigation } from './components/navigation';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+import { Main } from './components/Main';
 const history = createHistory();
 
 const App = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Navigation />
+      <Main />
     </ConnectedRouter>
   </Provider>
 );

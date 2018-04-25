@@ -3,6 +3,9 @@ const ENV = env.dev;
 import { ReactFacebookLoginInfo } from 'react-facebook-login';
 import { Dispatch } from 'redux';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { generalAlert } from '../components/settings/alertSetting';
+import { messageMap } from '../reponseConstant';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export type LOGIN_SUCCESS = typeof LOGIN_SUCCESS;
@@ -78,14 +81,16 @@ export function loginUser(email: string, password: string) {
         } else if (response.data.token) {
           localStorage.setItem('token', response.data.token);
           dispatch(loginSuccess());
+          toast.success(response.data.status, generalAlert);
         }
       })
-      .catch(err => alert(`Error: ${err.response.status}\n Message: ${err.response.data.error}`));
+      .catch(err => toast.error(err.response.data.error, generalAlert));
   };
 }
 
 export function signUpUser(userName: string, email: string, password: string) {
   return (dispatch: Dispatch<LoginActions>) => {
+    const loadingId = toast('Logging in...', generalAlert);
     return axios
       .post<APIResponse.signUp>(
         `${ENV.api_server}/auth/signup`,
@@ -99,21 +104,27 @@ export function signUpUser(userName: string, email: string, password: string) {
         if (response.data == null) {
           dispatch(loginFailure('Unknown Error'));
         } else if (!response.data.userId) {
-          // If there was a problem, we want to
-          // dispatch the error condition
           dispatch(loginFailure(response.data.error || ''));
         } else {
-          // If login was successful, set the token in local storage
-          // Dispatch the success action
           dispatch(signUpSuccess());
+          if (response.data.status) {
+            toast.update(loadingId, {
+              render: messageMap[response.data.status],
+              type: 'success'
+            });
+          }
         }
       })
-      .catch(err => alert(`Error: ${err.response.status}\n Message: ${err.response.data.error}`));
+      .catch(err => toast.update(loadingId, {
+        render: messageMap[err.response.data.error],
+        type: 'error'
+      }));
   };
 }
 
 export function FbLoginUser(userInfo: ReactFacebookLoginInfo & { accessToken: string }) {
   return (dispatch: Dispatch<LoginActions>) => {
+    const loadingId = toast('Logging in...', generalAlert);
     return axios
       .post<{ token: string; status?: string; error?: string }>(
         `${ENV.api_server}/auth/facebook`,
@@ -131,9 +142,44 @@ export function FbLoginUser(userInfo: ReactFacebookLoginInfo & { accessToken: st
           localStorage.setItem('token', response.data.token);
           // Dispatch the success action
           dispatch(loginSuccess());
+          if (response.data.status) {
+            toast.update(loadingId, {
+              render: messageMap[response.data.status],
+              type: 'success'
+            });
+          }
         }
       })
-      .catch(err => alert(`Error: ${err.response.status}\n Message: ${err.response.data.error}`));
+      .catch(err => toast.update(loadingId, {
+        render: messageMap[err.response.data.error],
+        type: 'error'
+      }));
+  };
+}
+
+export function jwtLogin(JWTtoken: string) {
+  return (dispatch: Dispatch<LoginActions>) => {
+    return axios({
+      method: 'POST',
+      url: `${ENV.api_server}/auth/jwt`,
+      headers: { Authorization: `Bearer ${JWTtoken}` }
+    })
+      .then(response => {
+        if (response.data == null) {
+          return dispatch(loginFailure('Unknown Error'));
+        } else if (response.data.error) {
+          return dispatch(loginFailure(response.data.error || ''));
+        } else {
+          if (response.data.status) {
+            toast.success(messageMap[response.data.status], generalAlert);
+          }
+
+          return dispatch(loginSuccess());
+        }
+      })
+      .catch(err => {
+        toast.error(messageMap[err.response.data.error], generalAlert);
+      });
   };
 }
 

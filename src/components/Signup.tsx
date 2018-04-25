@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container } from 'reactstrap';
+import { ModalHeader, ModalBody, Modal, Button, ModalFooter } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { LoginActions, signUpUser } from '../actions/auth-action';
@@ -9,6 +9,7 @@ import { SignupForm } from './Forms/SignUpFrom';
 
 interface SignUpProps {
     isSignedUp: boolean;
+    buttonLabel: string;
     signUp: (
         userName: string,
         email: string,
@@ -18,6 +19,7 @@ interface SignUpProps {
 
 interface SignUpState {
     redirectToHome: boolean;
+    isOpen: boolean;
 }
 
 interface SignupValues {
@@ -30,15 +32,22 @@ class PureSignUp extends React.Component<SignUpProps, SignUpState> {
     constructor(props: SignUpProps) {
         super(props);
         this.state = {
-            redirectToHome: false
+            redirectToHome: false,
+            isOpen: false
         };
+        this.signUp = this.signUp.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
-    signUp = async (values: SignupValues) => {
+    async signUp(values: SignupValues) {
         await this.props.signUp(values.username, values.email, values.password);
         if (this.props.isSignedUp) {
             this.setState({ redirectToHome: true });
         }
+    }
+
+    toggle() {
+        this.setState({ isOpen: !this.state.isOpen });
     }
 
     render() {
@@ -47,9 +56,21 @@ class PureSignUp extends React.Component<SignUpProps, SignUpState> {
             return <Redirect to="/login" />;
         }
         return (
-            <Container className="dashboard">
-                <SignupForm onSubmit={this.signUp} />
-            </Container>
+            <div>
+                <Button color="info" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+                <Modal
+                    isOpen={this.state.isOpen}
+                    size="md"
+                >
+                    <ModalHeader>Sign up in VinBuddies</ModalHeader>
+                    <ModalBody>
+                        <SignupForm onSubmit={this.signUp} />
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
+            </div>
         );
     }
 }
@@ -57,7 +78,7 @@ class PureSignUp extends React.Component<SignUpProps, SignUpState> {
 export const Signup = connect(
     (state: RootState) => ({ isSignedUp: state.auth.isSignedUp }),
     (dispatch: Dispatch<LoginActions>) => ({
-        signUp: (userName: string, email: string, password: string): Promise<void> =>
+        signUp: (userName: string, email: string, password: string): Promise<void | number> =>
             dispatch(signUpUser(userName, email, password))
     })
 )(PureSignUp);
