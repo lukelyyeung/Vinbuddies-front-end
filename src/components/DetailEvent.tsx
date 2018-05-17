@@ -5,7 +5,7 @@ import env from '../env';
 import Slider from 'react-slick';
 import * as Moment from 'moment';
 const ENV = env.dev;
-const imageurl = ENV.api_server.replace('/v1', '') + '/static';
+const imageurl = ENV.api_server.replace('/api/v1', '') + '/static';
 import * as bodyStyle from '../components/settings/bodyStyle';
 
 export class DetailEvent extends React.Component<any, any> {

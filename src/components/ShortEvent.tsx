@@ -5,7 +5,7 @@ import env from '../env';
 import { Link } from 'react-router-dom';
 import { CardBox } from './Forms/wineInfoBox';
 const ENV = env.dev;
-const image = ENV.api_server.replace('/v1', '') + '/static';
+const image = ENV.api_server.replace('/api/v1', '') + '/static';
 
 export const ShortEvent = (props: any) => {
     const { events, match } = props;

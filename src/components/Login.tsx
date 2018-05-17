@@ -98,7 +98,7 @@ export class PureLogin extends React.Component<LoginProps, LoginState> {
           <Col xs="12" md="2" className="flexBox-row"><h1>OR</h1></Col>
           <hr />
           <Col xs="12" md="5" className="flexBox-row">
-            <FbLogin location={this.props.location} />
+            <FbLogin location={this.props.location}/>
           </Col>
         </Row>
       </Container>

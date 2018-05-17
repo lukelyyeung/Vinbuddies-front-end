@@ -6,6 +6,6 @@
 3.  React-drop-zone for drag and drop file upload
 4.  React-simple-chatbot for chatbot with fixed steps (Will be abandoned in the next update)
 
-##Deployment on CDN##
+## Deployment on CDN ##
 Deployed on 
 https://vinbuddies.stream
