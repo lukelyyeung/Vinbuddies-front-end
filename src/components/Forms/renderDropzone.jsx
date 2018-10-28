@@ -6,9 +6,9 @@ import { Card, CardImg, CardBody, Row, Col, Container } from "reactstrap";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 import numberSuffix from "../../helpers/numberSuffix";
-import env from "../../env";
 import { GravatarOption, GravatarValueWine } from "./Gravator";
-const ENV = env.dev;
+
+const { REACT_API_SERVER } = process.env;
 
 export const RenderWineInput = props => {
   const { input } = props;
@@ -20,7 +20,7 @@ export const RenderWineInput = props => {
     }
     let options = await axios({
       method: "GET",
-      url: `${ENV.api_server}/wine?name=${value}`,
+      url: `${REACT_API_SERVER}/wine?name=${value}`,
       headers: { Authorization: `Bearer ${token}` }
     }).then(data =>
       data.data.map(wine => ({

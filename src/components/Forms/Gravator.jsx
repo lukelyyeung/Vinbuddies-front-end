@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import * as FA from "react-fontawesome";
-import env from "../../env";
 import {
   Modal,
   ModalHeader,
@@ -12,7 +11,8 @@ import {
   Col
 } from "reactstrap";
 import { WineAttribute, AwardsList } from "./wineInfoBox";
-const ENV = env.dev;
+
+const {REACT_API_SERVER} = process.env;
 
 export class GravatarOption extends Component {
   constructor(props) {
@@ -104,7 +104,7 @@ export class GravatarValueWine extends Component {
     let token = localStorage.getItem("token");
     return axios({
       method: "GET",
-      url: `${ENV.api_server}/wine?id=${this.props.value.id}`,
+      url: `${REACT_API_SERVER}/wine?id=${this.props.value.id}`,
       headers: { Authorization: `bearer ${token}` }
     })
       .then(data =>

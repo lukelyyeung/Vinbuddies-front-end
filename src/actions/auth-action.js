@@ -1,4 +1,3 @@
-import env from '../env';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { generalAlert } from '../components/settings/alertSetting';
@@ -8,7 +7,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-const ENV = env.dev;
+
+const { REACT_API_SERVER } = process.env;
 
 export function loginSuccess() {
   return {
@@ -39,7 +39,7 @@ export function loginUser(email, password) {
   return (dispatch) => {
     return axios
       .post(
-        `${ENV.api_server}/auth/login`,
+        `${REACT_API_SERVER}/auth/login`,
         {
           email: email,
           password: password
@@ -65,7 +65,7 @@ export function signUpUser(userName, email, password) {
     const loadingId = toast('Logging in...', generalAlert);
     return axios
       .post(
-        `${ENV.api_server}/auth/signup`,
+        `${REACT_API_SERVER}/auth/signup`,
         {
           username: userName,
           email: email,
@@ -99,7 +99,7 @@ export function FbLoginUser(userInfo) {
     const loadingId = toast('Logging in...', generalAlert);
     return axios
       .post(
-        `${ENV.api_server}/auth/facebook`,
+        `${REACT_API_SERVER}/auth/facebook`,
         { accessToken: userInfo.accessToken }
       )
       .then(response => {
@@ -133,7 +133,7 @@ export function jwtLogin(JWTtoken) {
   return (dispatch) => {
     return axios({
       method: 'POST',
-      url: `${ENV.api_server}/auth/jwt`,
+      url: `${REACT_API_SERVER}/auth/jwt`,
       headers: { Authorization: `Bearer ${JWTtoken}` }
     })
       .then(response => {

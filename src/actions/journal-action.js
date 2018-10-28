@@ -1,12 +1,12 @@
-import env from '../env';
 import axios from 'axios';
-const ENV = env.dev;
 
 export const GET_JOURNAL_SUCCESS = 'GET_JOURNAL_SUCCESS';
 export const SET_SEARCH_CRITERIA = 'SET_SEARCH_CRITERIA';
 export const TAB_JOURNAL = 'TAB_JOURNAL';
 export const GET_MORE_JOURNAL_SUCCESS = 'GET_MORE_JOURNAL_SUCCESS';
 export const GET_JOURNAL_FAIL = 'GET_JOURNAL_FAIL';
+
+const { REACT_API_SERVER } = process.env;
 
 function getJournalSuccess(jounral) {
   return {
@@ -53,7 +53,7 @@ export function callJounral(query) {
   return (dispatch) => {
     return axios({
       method: 'GET',
-      url: `${ENV.api_server}/eventjournal?${generateQueryString(query)}`,
+      url: `${REACT_API_SERVER}/eventjournal?${generateQueryString(query)}`,
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {

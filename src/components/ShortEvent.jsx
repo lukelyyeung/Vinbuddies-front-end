@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import * as moment from "moment";
 import { Card, CardBody, Col, Button, Row } from "reactstrap";
-import env from "../env";
 import { Link } from "react-router-dom";
 import { CardBox } from "./Forms/wineInfoBox";
-const ENV = env.dev;
-const image = ENV.api_server.replace("/api/v1", "") + "/static";
+
+const {REACT_API_SERVER} = process.env;
+const image = REACT_API_SERVER.replace("/api/v1", "") + "/static";
 
 export const ShortEvent = props => {
   const { events, match } = props;

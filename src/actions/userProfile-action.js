@@ -1,13 +1,13 @@
 import axios from 'axios';
 import * as jwt_decode from 'jwt-decode';
-import env from '../env';
 import { toast } from 'react-toastify';
 import { generalAlert } from '../components/settings/alertSetting';
 import { messageMap } from '../reponseConstant';
-const ENV = env.dev;
 
 export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
 export const GET_PROFILE_FAILURE = 'GET_PROFILE_FAILURE';
+
+const { REACT_API_SERVER } = process.env;
 
 function getProfileSucess(profile) {
     return {
@@ -31,7 +31,7 @@ export function getUserProfile(JWTtoken) {
         }
         return axios({
             method: 'GET',
-            url: `${ENV.api_server}/user/${user.id}`,
+            url: `${REACT_API_SERVER}/user/${user.id}`,
             headers: { Authorization: `Bearer ${JWTtoken}` }
         })
             .then(response => {

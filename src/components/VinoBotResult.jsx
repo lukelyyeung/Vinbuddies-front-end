@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Loading } from "react-simple-chatbot";
 import axios from "axios";
-import env from "../env";
 import WineDisplay from "./WineDisplay";
 import { CardBody, Card, CardImg, Button } from "reactstrap";
-const ENV = env.dev;
+
+const { REACT_API_SERVER } = process.env;
 
 const Wines = props => {
   let { result, getMoreWine } = props;
@@ -63,7 +63,7 @@ export class VinoBotResult extends Component {
     const token = localStorage.getItem("token");
     return await axios({
       method: "GET",
-      url: `${ENV.api_server}/wine/meta?tags=${tags.join(
+      url: `${REACT_API_SERVER}/wine/meta?tags=${tags.join(
         "+"
       )}&offset=${offset || 0}&limit=3`,
       headers: { Authorization: `Bearer ${token}` }

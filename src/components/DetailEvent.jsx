@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Button, Card, CardImg, CardBody, CardText } from "reactstrap";
 import axios from "axios";
-import env from "../env";
 import Slider from "react-slick";
 import * as Moment from "moment";
 import * as bodyStyle from "./settings/bodyStyle";
 
-const ENV = env.dev;
-const imageurl = ENV.api_server.replace("/api/v1", "") + "/static";
+const { REACT_API_SERVER } = process.env;
+const imageurl = REACT_API_SERVER.replace("/api/v1", "") + "/static";
 
 export class DetailEvent extends Component {
   constructor(props) {
@@ -42,7 +41,7 @@ export class DetailEvent extends Component {
     let token = localStorage.getItem("token");
     await axios({
       method: "GET",
-      url: `${ENV.api_server}/event/${eventId}`,
+      url: `${REACT_API_SERVER}/event/${eventId}`,
       headers: { Authorization: `bearer ${token}` }
     }).then(data => this.setState({ event: data.data.event }));
   }
@@ -79,11 +78,7 @@ export class DetailEvent extends Component {
         <p>{event_title}</p>
         <hr />
         <label>Participants</label>
-        {participants && (
-          <p>
-            {participants.map((p) => p.username).join(", ")}
-          </p>
-        )}
+        {participants && <p>{participants.map(p => p.username).join(", ")}</p>}
         <hr />
         <label>Date</label>
         {date && <p>{Moment(date._d).format("LLL")}</p>}
@@ -92,9 +87,7 @@ export class DetailEvent extends Component {
         <p>{description}</p>
         <hr />
         <label>Tags</label>
-        {tags && (
-          <p>{tags.map((t) => t.tag_name).join(", ")}</p>
-        )}
+        {tags && <p>{tags.map(t => t.tag_name).join(", ")}</p>}
         <hr />
         <label>Gallery</label>
         {gallery && (

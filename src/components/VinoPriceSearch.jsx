@@ -3,10 +3,10 @@ import { RenderWineInput } from "./Forms/renderDropzone";
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Button, Row, Col } from "reactstrap";
 import axios from "axios";
-import env from "../env";
 import { Loading } from "react-simple-chatbot";
 import { connect } from "react-redux";
-const ENV = env.dev;
+
+const { REACT_API_SERVER } = process.env;
 
 const PureSearchInput = props => {
   const submitHandler = event => {
@@ -84,7 +84,7 @@ class PureSearchResult extends Component {
     }
     return await axios({
       method: "POST",
-      url: `${ENV.api_server.replace("/api/v1", "")}/webscrapy`,
+      url: `${REACT_API_SERVER.replace("/api/v1", "")}/webscrapy`,
       data: { name: this.props.formValues.value.split(" ").join("+") }
     })
       .then(data => {

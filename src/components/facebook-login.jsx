@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
 import { connect } from "react-redux";
 import { FbLoginUser } from "../actions/auth-action";
-import env from "../env";
 import { Redirect } from "react-router";
-const ENV = env.dev;
+const { REACT_FB_APP_ID } = process.env;
 
 class PureFbLogin extends Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class PureFbLogin extends Component {
     return (
       <div>
         <FacebookLogin
-          appId={ENV.facebook_app_id}
+          appId={REACT_FB_APP_ID}
           autoLoad={false}
           fields="name,email,picture,accessToken"
           callback={this.responseFacebook}
