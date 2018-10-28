@@ -12,7 +12,6 @@ import {
   Col
 } from "reactstrap";
 import { WineAttribute, AwardsList } from "./wineInfoBox";
-import "../../css/wineDisplay.css";
 const ENV = env.dev;
 
 export class GravatarOption extends Component {

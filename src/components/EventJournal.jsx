@@ -9,7 +9,6 @@ import {
   Row,
   Button
 } from "reactstrap";
-import "../css/eventJournal.css";
 import { ShortEvent } from "./ShortEvent";
 import { Route } from "react-router";
 import { DetailEvent } from "./DetailEvent";

@@ -3,7 +3,6 @@ import axios from 'axios';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { AsyncCreatable } from 'react-select';
-import 'react-select/dist/react-select.css';
 import env from '../../env';
 import DatePicker from 'react-datepicker';
 import { DatePickerInput } from './renderDatePicker';

@@ -1,7 +1,6 @@
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import React, { Component } from 'react';
-import '../css/vinobot.css';
 import { VinoBotResult } from './VinoBotResult';
 import { connect } from 'react-redux';
 import * as bodyStyle from './settings/bodyStyle';

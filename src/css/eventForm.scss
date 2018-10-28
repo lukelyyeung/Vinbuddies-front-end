@@ -1,0 +1,81 @@
+.eventForm {
+    min-width: 70vw;
+    width: auto;
+}
+
+.eventForm .inputArea{
+    box-shadow: none;
+}
+
+input {
+    max-width: 100%;
+}
+  
+.input {
+    width: 50%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}  
+
+.inputArea {
+    margin-top: 10px;
+}
+
+.userTag {
+    max-width: 400px;
+    height: auto;
+    margin: 10px 0;
+}
+
+.dateTag, 
+.tag {
+    margin: 10px 0;
+}
+
+.datePicker {
+    margin: 0;
+    width: 100%;
+    min-height: 40px;
+    background-color: rgb(183, 78, 85);
+    opacity: 0.85;
+    border: none;
+    box-shadow: 5px 4px 0px 1px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.datePicker:hover {
+    opacity: 1.0;
+    background-color: rgb(183, 78, 85);
+    color: #fff;
+}
+
+.react-datepicker__input-container {
+    width: 100%;
+    padding:0;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+    padding: 0;
+}
+
+.preview-wine-image {
+    object-fit: cover;
+    height: 100px;
+}
+
+.react-datepicker__time-container {
+    min-width: 75px;
+}
+
+.preview-wine-card {
+    width: 100px;
+    margin: 5px;
+    font-size: 0.6rem;
+    height: 160px;
+    overflow: hidden;
+    padding: 3px;
+}
+
+.card-text {
+    padding-top: 3px;
+}

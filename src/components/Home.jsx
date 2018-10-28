@@ -1,6 +1,5 @@
 import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
-import '../css/homePage.css';
 import { Link } from 'react-router-dom';
 
 export const Home = () => (

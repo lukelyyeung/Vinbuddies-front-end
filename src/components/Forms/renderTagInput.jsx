@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { AsyncCreatable } from 'react-select';
-import 'react-select/dist/react-select.css';
 import env from '../../env';
 const ENV = env.dev;
 

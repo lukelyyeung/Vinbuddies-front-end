@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import * as FA from 'react-fontawesome';
 import { AsyncCreatable } from 'react-select';
-import 'react-select/dist/react-select.css';
 import env from '../../env';
 import { GravatarValue, GravatarOption } from './Gravator';
 const ENV = env.dev;

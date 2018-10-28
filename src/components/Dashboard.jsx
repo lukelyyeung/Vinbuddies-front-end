@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Row, Container, Col } from "reactstrap";
 import { Link, Route } from "react-router-dom";
-import "../css/dashboard.css";
 import { EventJournal } from "./EventJournal";
 import { RootState } from "../store";
 import { connect } from "react-redux";

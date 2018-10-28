@@ -1,9 +1,5 @@
 import React from "react";
 import * as FA from "react-fontawesome";
-import "react-select/dist/react-select.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "../../css/renderGalleryDrop.css";
 import Dropzone from "react-dropzone";
 import Slider from "react-slick";
 import { Row, Col, Container } from "reactstrap";

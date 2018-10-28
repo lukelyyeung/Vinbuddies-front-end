@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import * as FA from "react-fontawesome";
-import "react-select/dist/react-select.css";
 import { Button } from "reactstrap";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 export class DatePickerInput extends Component {
   constructor(props) {

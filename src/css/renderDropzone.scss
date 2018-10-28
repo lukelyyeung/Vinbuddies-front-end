@@ -1,0 +1,93 @@
+.preview li {
+    margin: 5px;
+    position: relative;
+    height: 150px;
+}
+  
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wineInputContainer {
+    width: 100%;
+}
+
+.wineDropZone {
+    width: 100%;
+}
+
+.dropBoxOverlay {
+  background-color: #F1DAC8;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  height: 160px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+}
+
+.dropBox {
+  border: 2px dashed rgb(100,100,100);
+  width: 100%;
+  height: 160px;
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.dropzone {
+  position: relative;
+}
+
+.preview {
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    z-index: 3;
+    height: 150px;
+}
+
+.delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: 0;
+    background-color: transparent;
+    color: rgba(255, 0 , 0, 1);
+    border-radius:50%;
+    border:1px solid rgba(255, 0 , 0, 1);
+    font-size: 50%;
+}
+
+.delete:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0 , 0, 1);
+    color: #fff;
+}
+
+.wine {
+    width: 100px;
+    height: 150px;
+}
+
+.thumbnail {
+    object-fit: cover;
+    width: 100px;
+    height: 150px;
+    border: none;
+}
+
+.gallery {
+    margin-bottom: 10px;
+}
+
+.card-body {
+    padding: 0;
+}

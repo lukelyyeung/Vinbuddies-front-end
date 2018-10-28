@@ -1,8 +1,6 @@
 import React from 'react';
 import * as FA from 'react-fontawesome';
-import 'react-select/dist/react-select.css';
 import { Input } from 'reactstrap';
-import 'react-datepicker/dist/react-datepicker.css';
 
 export const renderInput = (props) => {
     return (

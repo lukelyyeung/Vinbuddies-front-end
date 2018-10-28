@@ -4,8 +4,6 @@ import EventFormSecondPage from './EventFormSecondPage';
 import EventFormThirdPage from './EventFormThirdPage';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
-import '../../css/eventForm.css';
-import '../../css/renderGalleryDrop.css';
 import { Redirect } from 'react-router';
 import { toast } from 'react-toastify';
 import * as bodyStyle from '../settings/bodyStyle';

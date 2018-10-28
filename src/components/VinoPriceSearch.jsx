@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/vinobot.css";
 import { RenderWineInput } from "./Forms/renderDropzone";
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Button, Row, Col } from "reactstrap";

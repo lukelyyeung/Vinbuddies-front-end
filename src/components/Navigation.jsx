@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import '../css/nav.css';
-import 'react-toastify/dist/ReactToastify.css';
-
 import {
     Collapse,
     Navbar,

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import '../../css/eventPreview.css';
 import Slider from 'react-slick';
 import {
     Button,

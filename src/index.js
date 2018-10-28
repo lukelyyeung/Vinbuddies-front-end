@@ -1,8 +1,7 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.css';
-import './css/index.css';
+import './css/main.scss';
 import { store } from './store';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';

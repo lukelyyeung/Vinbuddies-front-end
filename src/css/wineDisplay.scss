@@ -1,0 +1,140 @@
+.wineImg, .countryImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
+}
+
+.producer-wrapper > .header > h5 {
+    padding: 3px;
+    color: #fff;
+    font-weight: 700;
+    margin: 1px;
+}
+
+.producer-wrapper > .header {
+    position: absolute;
+    background-color: #42626D;
+    width: 100%;
+    left:0;
+    right:0;
+    bottom: 50%;
+    height: 50%;
+    border-radius: 5px 5px 0 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.fa-star, .fa-star-o {
+    color: #ffd700;
+}
+
+.producer-wrapper > .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    border-left: 2px solid #42626D;
+    border-right: 2px solid #42626D;
+    border-bottom: 2px solid #42626D;
+}
+
+.producer-wrapper > .content > p {
+    margin-bottom: 0;
+}
+
+.wineImg-wrapper {
+    position: relative;
+    padding-bottom: 177%;
+    margin: 10px;
+}
+
+.producer-wrapper {
+    /* border: 2px solid #42626D; */
+    border-radius: 5px;
+}
+
+.country-wrapper,
+.producer-wrapper,
+.award-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.award-wrapper {
+    padding-bottom: 75%;
+}
+
+.award-wrapper > .header,
+.award-wrapper > .year,
+.award-wrapper > .trophy-box {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.award-wrapper > .header {
+    bottom: 55%;
+    height: 45%;
+    border-radius: 5px 5px 0 0;
+    background-color: #42626D;
+    color: #fff;
+    padding: 3px;
+}
+
+.year {
+    bottom: 35%;
+    height: 20%;
+    border-left: 2px solid #42626D;
+    border-right: 2px solid #42626D;
+}
+
+.year p {
+    margin-bottom: 0;
+}
+
+.trophy-box {
+    bottom: 0;
+    height: 35%;
+    background-color: #42626D;
+}
+
+.fa-trophy {
+    color: #fff;
+}
+.fa-trophy[class*='gold'] {
+    color: #ffd700;
+}
+.fa-trophy[class*='silver'] {
+    color: #c0c0c0;
+}
+.fa-trophy[class*='bronze'] {
+    color: #cd7f32;
+}
+
+.outline {
+    color: #42626D;
+    font-weight: 700;
+}
+.outline h3 {
+    border-bottom: 2px solid #42626D;
+}

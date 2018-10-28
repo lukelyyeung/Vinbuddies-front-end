@@ -4,7 +4,6 @@ import { RenderMultipleInput } from './renderMultiInput';
 import { formValueSelector } from 'redux-form';
 import { Button, Input } from 'reactstrap';
 import { connect } from 'react-redux';
-import '../../css/searchBar.css';
 
 const searchTypeInput = (props) => {
     return (
