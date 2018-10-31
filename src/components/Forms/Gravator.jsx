@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { WineAttribute, AwardsList } from "./wineInfoBox";
 
-const {REACT_API_SERVER} = process.env;
+const { REACT_API_SERVER } = process.env;
 
 export class GravatarOption extends Component {
   constructor(props) {
@@ -59,7 +59,11 @@ export class GravatarOption extends Component {
         onMouseMove={this.handleMouseMove}
         title={this.props.option.title}
       >
-        <img src={this.props.option.picture} style={this.gravatarStyle} />
+        <img
+          src={this.props.option.picture}
+          style={this.gravatarStyle}
+          alt="Gravator"
+        />
         {this.props.children}
       </div>
     );
@@ -138,7 +142,11 @@ export class GravatarValueWine extends Component {
         onClick={this.toggle}
       >
         <span className="Select-value-label">
-          <img src={this.props.value.picture} style={this.gravatarStyle} />
+          <img
+            src={this.props.value.picture}
+            style={this.gravatarStyle}
+            alt="wine"
+          />
           {this.props.children}
         </span>
         <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg">
@@ -255,7 +263,11 @@ export class GravatarValue extends Component {
     return (
       <div className="Select-value" title={this.props.value.title}>
         <span className="Select-value-label">
-          <img src={this.props.value.picture} style={this.gravatarStyle} />
+          <img
+            src={this.props.value.picture}
+            style={this.gravatarStyle}
+            alt="icon"
+          />
           {this.props.children}
         </span>
       </div>

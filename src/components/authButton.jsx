@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Dispatch } from 'redux';
-import { RootState } from '../store';
 import { logout } from '../actions/auth-action';
 
 const PureAuthButton = ({ isAuthenticated, signOut }) => {

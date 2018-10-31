@@ -32,7 +32,6 @@ const bubbleStyle = {
 };
 
 export class PureVinoBot extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -143,6 +142,7 @@ export class PureVinoBot extends Component {
 
     componentDidMount() {
         for (const i of Object.keys(bodyStyle.vinobot)) {
+            console.log(bodyStyle.vinobot[i]);
             document.body.style[i] = bodyStyle.vinobot[i];
         }
     }
@@ -163,5 +163,9 @@ export class PureVinoBot extends Component {
         );
     }
 }
+
+PureVinoBot.defaultProps = {
+  profile: {},
+};
 
 export const VinoBot = connect((state) => ({ profile: state.profile }))(PureVinoBot);

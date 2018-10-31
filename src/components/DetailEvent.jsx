@@ -98,6 +98,7 @@ export class DetailEvent extends Component {
                   <img
                     className="galleryThumbnail"
                     src={`${imageurl}/${f.photo_path}`}
+                    alt="gallery"
                   />
                 </div>
               </div>

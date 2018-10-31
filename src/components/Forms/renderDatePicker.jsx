@@ -1,31 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import * as FA from "react-fontawesome";
 import { Button } from "reactstrap";
 import DatePicker from "react-datepicker";
 
-export class DatePickerInput extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <Button
-        color="info"
-        className={this.props.className}
-        onClick={this.props.onClick}
-      >
-        {this.props.value}
-      </Button>
-    );
-  }
-}
+export const DatePickerInput = ({ className, onClick, value }) => (
+  <Button color="info" className={className} onClick={onClick}>
+    {value}
+  </Button>
+);
 
 export const renderDatePicker = props => {
   const {
     input: { value: date }
   } = props;
-  const changeHandler = (newDate) =>
-    props.input.onChange(newDate);
+  const changeHandler = newDate => props.input.onChange(newDate);
   return (
     <div className="dateTag">
       <label>{props.placeholder}</label>

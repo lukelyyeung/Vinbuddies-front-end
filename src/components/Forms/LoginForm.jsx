@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { InputGroup, InputGroupAddon, InputGroupText, Input, Button } from 'reactstrap';
 import * as FA from 'react-fontawesome';
 import { Signup } from '../Signup';

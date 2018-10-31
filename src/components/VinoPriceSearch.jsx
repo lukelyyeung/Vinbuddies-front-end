@@ -37,32 +37,29 @@ export const SearchInput = reduxForm({
   forceUnregisterOnUnmount: true
 })(PureSearchInput);
 
-const WineShop = props => {
-  {
-    return props.result.map((r, i) => (
-      <Row key={i} className="wine-offers">
-        <Col md="3">
-          {r.shopName}
-          <div>Country: {r.country}</div>
-        </Col>
-        <Col md="9">
-          <Row>
-            <Col md="6">{r.wineName}</Col>
-            <Col md="3">
-              <div>{r.curreny}</div>
-              <div>{r.price}</div>
-            </Col>
-            <Col md="3" className="flexBox-Row">
-              <Button color="info" onClick={() => window.open(r.link)}>
-                Go to shop >
-              </Button>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    ));
-  }
-};
+const WineShop = ({ result }) =>
+  result.map((r, i) => (
+    <Row key={i} className="wine-offers">
+      <Col md="3">
+        {r.shopName}
+        <div>Country: {r.country}</div>
+      </Col>
+      <Col md="9">
+        <Row>
+          <Col md="6">{r.wineName}</Col>
+          <Col md="3">
+            <div>{r.curreny}</div>
+            <div>{r.price}</div>
+          </Col>
+          <Col md="3" className="flexBox-Row">
+            <Button color="info" onClick={() => window.open(r.link)}>
+              Go to shop >
+            </Button>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+  ));
 
 class PureSearchResult extends Component {
   constructor(props) {

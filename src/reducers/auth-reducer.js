@@ -1,4 +1,4 @@
-import { LoginActions, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, SIGNUP_SUCCESS } from '../actions/auth-action';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, SIGNUP_SUCCESS } from '../actions/auth-action';
 const initialAuthState = { isAuthenticated: false, isSignedUp: false };
 
 export function authReducer(state = initialAuthState, action) {
