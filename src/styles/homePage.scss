@@ -1,79 +1,69 @@
-.jumbotron {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    background-color: transparent;
-    color: white;
-    border-radius: 0;
-    font-weight: 700;
-    margin: 0;
-  }
+.home {
+    &__hero {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background-color: transparent;
+        color: white;
+        border-radius: 0;
+        font-weight: 700;
+        margin: 0;
 
-.jumbotron .bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('./homePage.jpg');
-    background-position: 0% 25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-filter: brightness(0.7);
-    -moz-filter: brightness(0.7);
-     -o-filter: brightness(0.7);
-     -ms-filter: brightness(0.7);
-     filter: brightness(0.7);
-     z-index: -1;
-}
+        &__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("./homePage.jpg");
+            background-position: 0% 25%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: brightness(0.7);
+            z-index: -1;
+        }
 
-.jumbotron .overlay {
-    position: absolute;
-    top: 20vh;
-    left: 20vw;
-    right: 20vw;
-    bottom: 20vh;
-    background-color: rgba(255, 255, 255, 0.35);
-    width: 60vw;
-    height: 60vh;
-    background-position: 0% 25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-filter: brightness(0.5);
-    -moz-filter: brightness(0.5);
-     -o-filter: brightness(0.5);
-     -ms-filter: brightness(0.5);
-     filter: brightness(0.5);
-     z-index: -1;
-}
+        &__overlay {
+            position: absolute;
+            top: 20vh;
+            left: 20vw;
+            right: 20vw;
+            bottom: 20vh;
+            background-color: rgba(255, 255, 255, 0.35);
+            width: 60vw;
+            height: 60vh;
+            background-position: 0% 25%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: brightness(0.5);
+            z-index: -1;
+        }
 
-.jumbotron h2 {
-    font-weight: 700;
-    font-size: calc(9.5vw + 10px);
-    font-family: 'Lobster', 'Open Sans', serif;
-}
+        &__button {
+            padding: 5px 25px;
+            font-size: calc(100% + 5px);
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            transition: ease 0.5s;
 
-.jumbotron h4 {
-    font-family: 'Lobster', 'Open Sans', serif;
-}
+            &:hover {
+                background-color: #fff;
+                color: #000;
+                border: none;
+                font-weight: 700;
+                transform: scale(1.25);
+            }
+        }
 
-.hero-button {
-    padding: 5px 25px;
-    font-size: calc(100% + 5px);
-    width: auto;
-    height: auto;
-    /* border-radius: 100px; */
-    background-color: transparent;
-    border: 2px solid #fff;
-    color: #fff;
-    transition: ease 0.5s;
-}
+        h2,
+        h4 {
+            font-family: 'Lobster', 'Open Sans', serif;
+        }
 
-.hero-button:hover {
-    background-color: #fff;
-    color: #000;
-    border: none;
-    font-weight: 700;
-    transform: scale(1.25);
-    transition: ease 0.5s;
+        h2 {
+            font-weight: 700;
+            font-size: calc(9.5vw + 10px);
+        }
+    }
 }
