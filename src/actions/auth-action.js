@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { generalAlert } from '../components/settings/alertSetting';
+import { generalAlert } from '../settings/alertSetting';
 import { messageMap } from '../reponseConstant';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

@@ -3,7 +3,7 @@ import { Button, Card, CardImg, CardBody, CardText } from "reactstrap";
 import axios from "axios";
 import Slider from "react-slick";
 import * as Moment from "moment";
-import * as bodyStyle from "./settings/bodyStyle";
+import * as bodyStyle from "../settings/bodyStyle";
 
 const { REACT_API_SERVER } = process.env;
 const imageurl = REACT_API_SERVER.replace("/api/v1", "") + "/static";
@@ -25,8 +25,9 @@ export class DetailEvent extends Component {
   }
 
   async componentDidMount() {
-    for (const i of Object.keys(bodyStyle.eventDetails)) {
-      document.body.style[i] = bodyStyle.eventDetails[i];
+    const root = document.querySelector("#root");
+    for (const i of Object.keys(bodyStyle.dashboard)) {
+      root.style[i] = bodyStyle.dashboard[i];
     }
 
     if (Object.keys(this.state.event).length > 0) {
@@ -47,8 +48,9 @@ export class DetailEvent extends Component {
   }
 
   async componentWillUnmount() {
+    const root = document.querySelector("#root");
     for (const i of Object.keys(bodyStyle.eventDetails)) {
-      document.body.style[i] = null;
+      root.style[i] = null;
     }
   }
 

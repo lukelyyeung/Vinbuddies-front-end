@@ -31,7 +31,7 @@ export class RenderUserInput extends Component {
         label: user.username,
         value: user.username,
         id: user.id,
-        picture: user.picture || "guestuser.jpg"
+        picture: user.picture || "/common/guestuser.jpg"
       }))
     );
 

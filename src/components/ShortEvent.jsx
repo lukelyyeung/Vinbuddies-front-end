@@ -32,7 +32,7 @@ export const ShortEvent = props => {
                 <Row>
                   <Col md="2">
                     <CardBox
-                      image={e.creator[0].picture || "/guestuser.jpg"}
+                      image={e.creator[0].picture || "/common/guestuser.jpg"}
                       title={e.creator[0].username}
                     />
                   </Col>

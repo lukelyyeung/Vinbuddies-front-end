@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as jwt_decode from 'jwt-decode';
 import { toast } from 'react-toastify';
-import { generalAlert } from '../components/settings/alertSetting';
+import { generalAlert } from '../settings/alertSetting';
 import { messageMap } from '../reponseConstant';
 
 export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';

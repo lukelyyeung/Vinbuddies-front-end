@@ -14,8 +14,6 @@ import {
 } from "reactstrap";
 import { AuthButton } from "./authButton";
 import { connect } from "react-redux";
-import { getUserProfile } from "../actions/userProfile-action";
-import { jwtLogin } from "../actions/auth-action";
 
 export class PureNavigation extends Component {
   constructor(props) {
@@ -99,9 +97,5 @@ export const Navigation = connect(
   state => ({
     userProfile: state.profile,
     isAuthenicated: state.auth.isAuthenticated
-  }),
-  dispatch => ({
-    getUserProfile: token => dispatch(getUserProfile(token)),
-    jwtLogin: token => dispatch(jwtLogin(token))
   })
 )(PureNavigation);

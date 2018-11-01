@@ -19,7 +19,7 @@ import {
   setCriteria
 } from "../actions/journal-action";
 import { SearchBar } from "./Forms/SearchBar";
-import * as bodyStyle from "../components/settings/bodyStyle";
+import * as bodyStyle from "../settings/bodyStyle";
 
 class PureJournal extends Component {
   constructor(props) {
@@ -30,8 +30,9 @@ class PureJournal extends Component {
   }
 
   async componentDidMount() {
+    const root = document.querySelector("#root");
     for (const i of Object.keys(bodyStyle.journal)) {
-      document.body.style[i] = bodyStyle.journal[i];
+      root.style[i] = bodyStyle.journal[i];
     }
 
     if (this.props.events.length <= 0) {
@@ -46,8 +47,9 @@ class PureJournal extends Component {
   }
 
   async componentWillUnmount() {
+    const root = document.querySelector("#root");
     for (const i of Object.keys(bodyStyle.journal)) {
-      document.body.style[i] = null;
+      root.style[i] = null;
     }
   }
 

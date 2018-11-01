@@ -3,7 +3,7 @@ import { Button, Row, Container, Col } from "reactstrap";
 import { Link, Route } from "react-router-dom";
 import { EventJournal } from "./EventJournal";
 import { connect } from "react-redux";
-import * as bodyStyle from "./settings/bodyStyle";
+import * as bodyStyle from "../settings/bodyStyle";
 
 class PureHome extends Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class PureHome extends Component {
   componentWillUnmount() {
     const root = document.querySelector("#root");
     for (const i of Object.keys(bodyStyle.dashboard)) {
-      root.body.style[i] = null;
+      root.style[i] = null;
     }
   }
 
@@ -39,7 +39,7 @@ class PureHome extends Component {
         </Col>
         <Col md="8" className="d-flex align-items-center">
           <Row className="d-flex justify-content-center">
-            <Link to={`${match.url}eventjournal`}>
+            <Link to={`${match.url}/eventjournal`}>
               <Button color="info" className="service-wrapper">
                 <img
                   className="serviceImg"
